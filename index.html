@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.js" defer></script>
+    <title>Heart Disease Detection</title>
+  </head>
+  <body class="text-[#111518]">
+    <div class="relative flex flex-col bg-white overflow-x-hidden">
+      <div class="flex h-full grow flex-col">
+        <header class="background">
+          <div id="navbar"></div>
+
+          <section class="section-1 container">
+            <!-- review the use of @container -->
+            <div class="@[480px]:flex text-stone-900">
+              <div
+                class="flex min-h-[70vh] md:w-1/2 flex-col gap-6 @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center md:items-start md:justify-start p-4"
+              >
+                <div
+                  class="flex pl-12 md:pl-16 mt-4 md:mt-8 flex-col gap-4 text-center md:text-left"
+                >
+                  <h1
+                    class="text-4xl leading-tight md:text-7xl font-normal font-oswald"
+                    style="font-family: 'Oswald', Arial, sans-serif"
+                  >
+                    Predict Your Heart Disease Risk.
+                  </h1>
+                </div>
+                <div class="pl-12 md:pl-16 mt-4 md:mt-8">
+                  <h2 class="text-xl font-normal leading-normal">
+                    Our machine learning tool analyzes your health data to
+                    estimate your risk of heart disease. Get personalized
+                    insights and take control of your heart health.
+                  </h2>
+                  <div class="flex gap-2 mt-6">
+                    <button
+                      class="button-predict bg-sky-800 text-white font-bold leading-normal"
+                    >
+                      <a href="./src/pages/predict.html">Start Prediction</a>
+                      <span class="material-symbols-outlined">
+                        arrow_forward
+                      </span>
+                    </button>
+                    <button class="button-predict">
+                      <span class="material-symbols-outlined text-3xl">
+                        arrow_right
+                      </span>
+                      <a>How it Works</a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </header>
+        <section class="section-2 mx-6 mt-8 border-y">
+          <div class="max-w-[80rem] mx-auto my-20">
+            <h2 class="header_2">features</h2>
+            <h3 class="header_3">
+              Everything you need to know about our Heart Disease Modal
+            </h3>
+          </div>
+          <div class="features grid grid-cols-2 gap-16 mx-[6rem] my-8">
+            <img class="w-full" src="./src/img/heart_disease-1.jpg" alt="" />
+            <div class="features_feature">
+              <div class="features_icon"></div>
+              <h5 class="features_header">Data Information</h5>
+              <p class="features_details">
+                This database contains 76 attributes, but all published
+                experiments refer to using a subset of 14 of them. In
+                particular, the Cleveland database is the only one that has been
+                used by ML researchers to date.
+              </p>
+            </div>
+
+            <div class="features_feature">
+              <div class="features_icon"></div>
+              <h5 class="features_header">What it does</h5>
+              <p class="features_details">
+                The "goal" field refers to the presence of heart disease in the
+                patient. It is integer valued from 0 (no presence) to 4.
+                Experiments with the Cleveland database have concentrated on
+                simply attempting to distinguish presence (values 1,2,3,4) from
+                absence (value 0).
+              </p>
+            </div>
+            <img class="w-full" src="./src/img/heart_disease-2.jpg" alt="" />
+            <img class="w-full" src="./src/img/heart_disease-3.jpg" alt="" />
+            <div class="features_feature">
+              <div class="features_icon"></div>
+              <h5 class="features_header">What it does</h5>
+              <p class="features_details">
+                The names and social security numbers of the patients were
+                recently removed from the database, replaced with dummy values.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section
+          class="section-3 max-w-[100rem] mx-auto bg-gray-50 py-32 px-12 md:px-52"
+        >
+          <div class="max-w-full mb-8">
+            <h2 class="header_2">How It Works</h2>
+            <h4 class="header_4">
+              Our tool uses advanced machine learning algorithms to analyze your
+              health data and provide personalized insights. Here's how it works
+            </h4>
+          </div>
+          <div class="operations w-full mt-32 bg-white">
+            <div class="operations__tab-container flex justify-center w-full">
+              <button
+                class="btn operations__tab operations__tab--1 operations__tab--active"
+                data-tab="1"
+              >
+                Personalized Report
+              </button>
+              <button
+                class="btn operations__tab operations__tab--2"
+                data-tab="2"
+              >
+                User Assessment
+              </button>
+              <button
+                class="btn operations__tab operations__tab--3"
+                data-tab="3"
+              >
+                Data Processing
+              </button>
+            </div>
+            <div
+              class="operations__content operations__content--active operations__content--1"
+            >
+              <div class="operations__icon"></div>
+              <p>
+                Our algorithms analyze your data and compare it with trusted
+                medical research.
+              </p>
+            </div>
+            <div class="operations__content operations__content--2">
+              <div class="operations__icon"></div>
+              <p>
+                User assessment is done by entering your health data and
+                answering a series of questions.
+              </p>
+            </div>
+            <div class="operations__content operations__content--3">
+              <div class="operations__icon"></div>
+              <p>
+                Receive a personalized report outlining your heart disease risk
+                factors.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="py-32 px-16 bg-sky-50 max-w-xl md:max-w-full mx-auto rounded-sm"
+        >
+          <div class="mt-4 flex gap-8 flex-row justify-end">
+            <div class="flex bg-white w-full p-8 rounded-lg">
+              <h2 class="header_2">Why Trust Us</h2>
+              <p class="self-end text-2xl font-medium">
+                Powered by the UCI Heart Disease dataset <br />
+                Advanced machine learning with 95%+ accuracy <br />
+                Your data is never stored or shared <br />
+              </p>
+            </div>
+            <div
+              class="rounded-lg h-[30rem] w-[40rem] relative overflow-hidden"
+              id="carousel"
+            >
+              <div
+                class="slides flex transition-transform duration-500 h-full w-full"
+                id="carousel-track"
+              >
+                <img
+                  src="./src/img/slide-3.jpg"
+                  class="slide w-full slide--1 image-slide"
+                  alt="Image 1"
+                />
+                <img
+                  src="./src/img/slide-2.jpg"
+                  class="slide slide--2 image-slide"
+                  alt="Image 2"
+                />
+                <img
+                  src="./src/img/slide-1.jpg"
+                  class="slide slide--3 image-slide"
+                  alt="Image 3"
+                />
+              </div>
+              <!-- left arrow -->
+              <button
+                type="button"
+                id="carousel-prev"
+                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 rounded-full p-2 shadow hover:bg-white w-10 h-10 items-center flex"
+              >
+                <span class="material-symbols-outlined">chevron_left</span>
+              </button>
+              <!-- Right Arrow -->
+              <button
+                type="button"
+                id="carousel-next"
+                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 rounded-full p-2 shadow hover:bg-white w-10 h-10 items-center flex"
+              >
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
+              <div class="dots"></div>
+            </div>
+          </div>
+        </section>
+        <!-- <a
+            href="./src/pages/predict.html"
+            class="min-w-[84px] max-w-[480px] cursor-pointer overflow-hidden rounded-3xl py-4 px-4 bg-[#1982e5] text-white text-sm font-bold leading-normal"
+          >
+            Start Prediction
+          </a> -->
+        <!--  To be edited -->
+        <section class="px-12 py-8 mx-6">
+          <div class="flex items-center gap-4 p-4 w-full bg-sky-800">
+            <span class="material-symbols-outlined text-yellow-400 text-5xl">
+              database
+            </span>
+            <span>
+              <h2 class="text-[33px] text-white font-medium mb-0">
+                Heart Disease
+              </h2>
+              <p class="text-white mt-0">Donated on 06/30/1988</p>
+            </span>
+          </div>
+          <div class="container-body px-4 py-8 border-b">
+            <p class="text-lg">
+              4 databases: Cleveland, Hungary, Switzerland, and the VA Long
+              Beach
+            </p>
+            <div class="grid grid-cols-3 grid-rows-2 gap-2">
+              <div class="p-4 rounded">
+                <h3 class="text-xl font-semibold text-sky-600">
+                  Dataset Characteristics
+                </h3>
+                <p>Multivariate</p>
+              </div>
+              <div class="p-4 rounded">
+                <h3 class="text-xl font-semibold text-sky-600">Subject Area</h3>
+                <p>Health and Medicine</p>
+              </div>
+              <div class="p-4 rounded">
+                <h3 class="text-xl font-semibold text-sky-600">
+                  Associated Tasks
+                </h3>
+                <p>Classification</p>
+              </div>
+              <div class="p-4 rounded">
+                <h3 class="text-xl font-semibold text-sky-600">Feature Type</h3>
+                <p>Categorical, Integer, Real</p>
+              </div>
+              <div class="p-4 rounded">
+                <h3 class="text-xl font-semibold text-sky-600">#Instances</h3>
+                <p>303</p>
+              </div>
+              <div class="p-4 rounded">
+                <h3 class="text-xl font-semibold text-sky-600">#Features</h3>
+                <p>13</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div id="footer"></div>
+      </div>
+    </div>
+  </body>
+</html>
