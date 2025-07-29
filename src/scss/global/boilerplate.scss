@@ -8,8 +8,11 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   line-height: 1.9;
-  color: var(--color-text);
+  color: var(--color-gray-900);
   background-color: var(--color-bg);
+}
+a {
+  text-decoration: none;
 }
 
 img {

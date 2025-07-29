@@ -1,19 +1,23 @@
-@use "functions" as f;
+@use "./functions.scss" as f;
 @use "sass:math";
 
 $breakpoints: (
-  "medium": f.em(700),
-  "large": f.em(1200),
+  "xs": 359px,
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1536px,
 );
 
-@mixin breakpoint($size) {
-  @media (width >= map-get($breakpoints, $size)) {
+@mixin breakpoints($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
     @content;
   }
 }
 
 @mixin breakpoint-down($size) {
-  @media (width < map-get($breakpoints, $size)) {
+  @media (max-width: map-get($breakpoints, $size)) {
     @content;
   }
 }

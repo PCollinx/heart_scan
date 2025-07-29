@@ -4,22 +4,44 @@ import "./style.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   // load navbar and footer components
-  function loadComponent(id, url) {
+  function loadComponent(id, url, callback) {
     fetch(url)
       .then((res) => res.text())
       .then((html) => {
         document.getElementById(id).innerHTML = html;
+        if (callback) callback();
       });
   }
 
   loadComponent("footer", "/src/components/footer.html");
-  loadComponent("navbar", "/src/components/navbar.html");
+  loadComponent("navbar", "/src/components/navbar.html", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle?.addEventListener("click", () => {
+      console.log("clicked");
+      mobileMenu.classList.toggle("hidden");
+    });
+    // Load carousel functionality
+    if (window.innerWidth <= 768) {
+      import("./js/carousel.js");
+    }
+
+    document.addEventListener("click", (e) => {
+      if (
+        mobileMenu &&
+        !mobileMenu.classList.contains("hidden") &&
+        !mobileMenu.contains(e.target) &&
+        e.target !== menuToggle
+      ) {
+        mobileMenu.classList.add("hidden");
+      }
+    });
+  });
 
   const tabs = document.querySelectorAll(".operations__tab");
   const tabsContainer = document.querySelector(".operations__tab-container");
   const tabsContent = document.querySelectorAll(".operations__content");
-
-  console.log("Script loaded!", document.body);
 
   // TAB Section
 
@@ -57,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let index = 0;
 
   function updateCarousel() {
-    track.style.transform = `translateX(-${index * 100}%)`;
+    track.style.transform = `translateX(-${index * 33.333333}%)`;
     activateDot(index);
   }
 

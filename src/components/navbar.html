@@ -1,11 +1,11 @@
-<nav class="flex border-b px-4 py-2">
+<nav
+  class="flex h-12 sm:h-14 border-b px-4 py-2 border-b-gray-400 shadow-md fixed top-0 left-0 right-0 z-100 bg-white"
+>
   <div class="flex items-center gap-4">
-    <a href="/" class="flex gap-2">
-      <div class="pulse">
-        <span class="material-symbols-outlined font-medium text-stone-700">
-          heart_plus
-        </span>
-      </div>
+    <a href="/" class="flex items-center gap-2">
+      <span class="material-symbols-outlined font-medium text-stone-700">
+        heart_plus
+      </span>
       <h2
         class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]"
       >
@@ -13,22 +13,69 @@
       </h2>
     </a>
   </div>
-  <div class="flex flex-1 justify-end gap-8">
-    <div class="flex items-center gap-9">
-      <a class="text-[#111518] text-sm font-bold leading-normal" href="#"
-        >About</a
-      >
-      <div
-        class="bg-gray-300 p-1 w-10 h-10 rounded-full flex items-center justify-center"
-      >
-        <span class="material-symbols-outlined text-stone-700">bookmark</span>
-      </div>
+  <div class="hidden sm:flex sm:flex-1 justify-end items-center gap-8">
+    <a
+      class="text-[#111518]! visited:text-[#111518] hover:text-[#111518] text-sm font-bold leading-normal"
+      href="#"
+      >About</a
+    >
+    <div
+      class="bg-gray-300 p-1 w-10 h-10 rounded-full flex items-center justify-center"
+    >
+      <span class="material-symbols-outlined text-stone-700">bookmark</span>
     </div>
     <a
       href="/src/pages/predict.html"
-      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-3xl h-10 px-4 bg-[#1982e5] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-3xl h-10 px-4 bg-gray-700 text-white! text-sm font-bold leading-normal tracking-[0.015em]"
     >
-      <span class="truncate">Get Started</span>
+      <span class="">Get Started</span>
     </a>
+  </div>
+  <!-- Mobile Menu Icon -->
+  <button
+    class="flex items-center justify-center sm:hidden w-8 h-8 outline-none! border-none! shadow-sm transition-all duration-100 bg-sky-50! focus:outline-none! focus:border-none! ml-auto"
+    id="menu-toggle"
+    aria-label="Open menu"
+    type="button"
+  >
+    <span class="material-symbols-outlined">menu </span>
+  </button>
+  <!-- Mobile Menu Dropdown -->
+  <div
+    id="mobile-menu"
+    class="fixed hidden sm:hidden top-12 bg-white shadow-lg rounded-sm p-4 flex flex-col gap-4 z-80 left-0 right-0 transition-all ease-in duration-200"
+  >
+    <ul class="py-2">
+      <li>
+        <a
+          href="#"
+          class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+          style="color: var(--color-dark-500)"
+        >
+          <span class="material-symbols-outlined mr-3 text-xl">info</span>
+          <span class="font-medium">About</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+          style="color: var(--color-dark-500)"
+        >
+          <span class="material-symbols-outlined mr-3 text-xl">bookmark</span>
+          <span class="font-medium">Bookmarks</span>
+        </a>
+      </li>
+      <li class="border-t border-gray-100 mt-2 pt-2">
+        <a
+          href="/src/pages/predict.html"
+          class="flex items-center justify-center mx-4 mb-2 px-4 py-3 bg-gray-400 text-white rounded-lg font-semibold transition-colors duration-200"
+          style="color: var(--color-dark-500)"
+        >
+          <span class="material-symbols-outlined mr-2">health_and_safety</span>
+          <span>Get Started</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>

@@ -1,3 +1,5 @@
+@use "../utils/mixins.scss" as *;
+
 .button-predict {
   display: inline-flex;
   justify-content: center;
@@ -8,4 +10,26 @@
   overflow: hidden;
   cursor: pointer;
   font-weight: 500;
+
+  @include breakpoint-down("xs") {
+    padding: 5px 10px;
+  }
+  @include breakpoint-down("sm") {
+    padding: 8px 15px;
+    gap: 10px;
+  }
+}
+
+.button-icon {
+  @include breakpoint-down("xs") {
+    font-size: 14px;
+  }
+  @include breakpoint-down("sm") {
+    font-size: 16px;
+  }
+}
+
+.menu-btn {
+  // border-radius: 50%;
+  background-color: var(--color-sky-100);
 }
