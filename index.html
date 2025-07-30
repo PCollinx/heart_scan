@@ -72,7 +72,7 @@
           </section>
         </header>
         <section class="section-2 mx-3 sm:mx-6 sm:mt-8 mt-4 border-y">
-          <div class="max-w-[80rem] mx-auto my-10 sm:my-20">
+          <div class="max-w-[80rem] sm:mx-auto my-10 sm:my-20">
             <h2 class="header_2">features</h2>
             <h3 class="header_3">
               Everything you need to know about our Heart Disease Modal
@@ -81,13 +81,30 @@
           <div
             class="features grid grid-cols-1 sm:grid-cols-2 gap-6 mx-2 sm:mx-[1rem] pb-8 sm:pb-0 my-6 sm:my-8"
           >
-            <!-- First feature -->
-            <img
-              class="w-full order-2 sm:self-center sm:order-1"
-              src="./src/img/heart_disease-1.jpg"
-              alt=""
-            />
-            <div class="features_feature order-1 sm:order-2">
+            <!-- First feature - Image LEFT, Text RIGHT -->
+            <picture class="w-full order-1 sm:order-1">
+              <source
+                media="(max-width: 640px)"
+                srcset="./src/img/heart_disease-1-small.webp"
+                type="image/webp"
+              />
+              <source
+                media="(max-width: 1024px)"
+                srcset="./src/img/heart_disease-1-medium.webp"
+                type="image/webp"
+              />
+              <source
+                srcset="./src/img/heart_disease-1-large.webp"
+                type="image/webp"
+              />
+              <img
+                src="./src/img/heart_disease-1.jpg"
+                alt="Heart Disease Data Analysis Dashboard"
+                class="w-full h-auto rounded-lg shadow-lg"
+                loading="lazy"
+              />
+            </picture>
+            <div class="features_feature order-2 sm:order-2">
               <div class="features_icon">
                 <span class="material-symbols-outlined features_icon-span">
                   bloodtype
@@ -102,8 +119,8 @@
               </p>
             </div>
 
-            <!-- Second feature -->
-            <div class="features_feature order-3 sm:order-3">
+            <!-- Second feature - Text LEFT, Image RIGHT -->
+            <div class="features_feature order-4 sm:order-3">
               <div class="features_icon">
                 <span class="material-symbols-outlined features_icon-span">
                   cadence
@@ -118,19 +135,53 @@
                 absence (value 0).
               </p>
             </div>
-            <img
-              class="w-full order-4 sm:self-center sm:order-4"
-              src="./src/img/heart_disease-2.jpg"
-              alt=""
-            />
+            <picture class="w-full order-3 sm:order-4">
+              <source
+                media="(max-width: 640px)"
+                srcset="./src/img/heart_disease-2-small.webp"
+                type="image/webp"
+              />
+              <source
+                media="(max-width: 1024px)"
+                srcset="./src/img/heart_disease-2-medium.webp"
+                type="image/webp"
+              />
+              <source
+                srcset="./src/img/heart_disease-2-large.webp"
+                type="image/webp"
+              />
+              <img
+                src="./src/img/heart_disease-2.jpg"
+                alt="Machine Learning Model Performance"
+                class="w-full h-auto rounded-lg shadow-lg"
+                loading="lazy"
+              />
+            </picture>
 
-            <!-- Third feature -->
-            <img
-              class="w-full sm:self-center order-6 sm:order-5"
-              src="./src/img/heart_disease-3.jpg"
-              alt=""
-            />
-            <div class="features_feature order-5 sm:order-6">
+            <!-- Third feature - Image LEFT, Text RIGHT -->
+            <picture class="w-full order-5 sm:order-5">
+              <source
+                media="(max-width: 640px)"
+                srcset="./src/img/heart_disease-3-small.webp"
+                type="image/webp"
+              />
+              <source
+                media="(max-width: 1024px)"
+                srcset="./src/img/heart_disease-3-medium.webp"
+                type="image/webp"
+              />
+              <source
+                srcset="./src/img/heart_disease-3-large.webp"
+                type="image/webp"
+              />
+              <img
+                src="./src/img/heart_disease-3.jpg"
+                alt="Clinical Data Visualization"
+                class="w-full h-auto rounded-lg shadow-lg"
+                loading="lazy"
+              />
+            </picture>
+            <div class="features_feature order-6 sm:order-6">
               <div class="features_icon">
                 <span class="material-symbols-outlined features_icon-span">
                   medical_information
@@ -348,43 +399,108 @@
                 id="carousel-track"
                 style="width: 300%"
               >
-                <img
-                  src="./src/img/slide-3.jpg"
-                  class="slide w-1/3 flex-shrink-0 object-cover slide--1 image-slide"
-                  alt="Image 1"
-                />
-                <img
-                  src="./src/img/slide-2.jpg"
-                  class="slide w-1/3 flex-shrink-0 object-cover slide--2 image-slide"
-                  alt="Image 2"
-                />
-                <img
-                  src="./src/img/slide-1.jpg"
-                  class="slide w-1/3 flex-shrink-0 object-cover slide--3 image-slide"
-                  alt="Image 3"
-                />
+                <!-- Slide 1 -->
+                <picture class="slide w-1/3 flex-shrink-0 h-full">
+                  <source
+                    media="(max-width: 640px)"
+                    srcset="./src/img/slide-3-small.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    media="(max-width: 1024px)"
+                    srcset="./src/img/slide-3-medium.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="./src/img/slide-3-large.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="./src/img/slide-3.jpg"
+                    class="w-full h-full object-cover block"
+                    alt="Medical research and heart disease data visualization"
+                    loading="lazy"
+                  />
+                </picture>
+
+                <!-- Slide 2 -->
+                <picture class="slide w-1/3 flex-shrink-0 h-full">
+                  <source
+                    media="(max-width: 640px)"
+                    srcset="./src/img/slide-2-small.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    media="(max-width: 1024px)"
+                    srcset="./src/img/slide-2-medium.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="./src/img/slide-2-large.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="./src/img/slide-2.jpg"
+                    class="w-full h-full object-cover block"
+                    alt="Advanced heart disease prediction technology"
+                    loading="lazy"
+                  />
+                </picture>
+
+                <!-- Slide 3 -->
+                <picture class="slide w-1/3 flex-shrink-0 h-full">
+                  <source
+                    media="(max-width: 640px)"
+                    srcset="./src/img/slide-1-small.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    media="(max-width: 1024px)"
+                    srcset="./src/img/slide-1-medium.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="./src/img/slide-1-large.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="./src/img/slide-1.jpg"
+                    class="w-full h-full object-cover block"
+                    alt="Healthcare analytics and machine learning"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
-              <!-- left arrow -->
+
+              <!-- Navigation buttons -->
               <button
                 type="button"
                 id="carousel-prev"
-                class="carousel-btn left-2 top-1/2 -translate-y-1/2 rounded-full p-2 shadow hover:bg-white w-10 h-10 items-center flex"
+                class="carousel-btn absolute left-2 top-1/2 -translate-y-1/2 rounded-full p-2 shadow hover:bg-white w-10 h-10 bg-white/80 backdrop-blur-sm flex items-center justify-center z-10"
               >
-                <span class="material-symbols-outlined" style="font-size: 2rem"
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size: 1.5rem"
                   >chevron_left</span
                 >
               </button>
-              <!-- Right Arrow -->
+
               <button
                 type="button"
                 id="carousel-next"
-                class="carousel-btn right-2 top-1/2 -translate-y-1/2 rounded-full p-2 shadow hover:bg-white w-10 h-10 items-center flex"
+                class="carousel-btn absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 shadow hover:bg-white w-10 h-10 bg-white/80 backdrop-blur-sm flex items-center justify-center z-10"
               >
-                <span class="material-symbols-outlined" style="font-size: 2rem"
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size: 1.5rem"
                   >chevron_right</span
                 >
               </button>
-              <div class="dots"></div>
+
+              <!-- Dots indicators -->
+              <div
+                class="dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"
+              ></div>
             </div>
           </div>
         </section>

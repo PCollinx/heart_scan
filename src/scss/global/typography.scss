@@ -495,3 +495,95 @@
     }
   }
 }
+
+// Add these styles for responsive images
+picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+
+  &[loading="lazy"]:not([src]) {
+    opacity: 0;
+  }
+
+  &[loading="lazy"][src] {
+    opacity: 1;
+  }
+}
+
+// Carousel specific picture elements
+.slide picture {
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Feature section pictures
+.features picture {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  img {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+// Image carousel specific styles
+#carousel {
+  overflow: hidden; // Critical: prevents images from overflowing
+}
+
+#carousel-track {
+  display: flex;
+  width: 300%;
+  height: 100%;
+}
+
+// Ensure picture elements stay within bounds
+.slide {
+  flex: 0 0 33.333333%; // Exactly 1/3 width, no grow/shrink
+  width: 33.333333%;
+  height: 100%;
+  max-width: 33.333333%; // Prevent expansion
+  overflow: hidden; // Prevent children from overflowing
+  
+  // Make picture element fill the slide container
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block; // Remove inline spacing
+    }
+  }
+}
+
+// Alternative approach using CSS Grid
+.alternative-carousel-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 300%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}

@@ -72,67 +72,59 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Initialize the carousel
-
+  // === IMAGE CAROUSEL ===
   const track = document.getElementById("carousel-track");
-  const images = track.children.length;
-  let index = 0;
+  if (track) {
+    let index = 0;
+    const totalSlides = 3; // Hard-coded for now
 
-  function updateCarousel() {
-    track.style.transform = `translateX(-${index * 33.333333}%)`;
-    activateDot(index);
+    console.log("Image carousel initialized");
+
+    function updateCarousel() {
+      const translateX = -(index * 33.333333);
+      track.style.transform = `translateX(${translateX}%)`;
+      console.log(`Image slide ${index}, translateX: ${translateX}%`);
+
+      // Update dots
+      document.querySelectorAll(".dots .dots__dot").forEach((dot, i) => {
+        dot.classList.toggle("dots__dot--active", i === index);
+      });
+    }
+
+    // Image carousel buttons
+    document.getElementById("carousel-prev")?.addEventListener("click", () => {
+      index = (index - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    });
+
+    document.getElementById("carousel-next")?.addEventListener("click", () => {
+      index = (index + 1) % totalSlides;
+      updateCarousel();
+    });
+
+    // Create dots for image carousel
+    const dotContainer = document.querySelector(".dots");
+    if (dotContainer) {
+      dotContainer.innerHTML = "";
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("button");
+        dot.className = `dots__dot ${i === 0 ? "dots__dot--active" : ""}`;
+        dot.addEventListener("click", () => {
+          index = i;
+          updateCarousel();
+        });
+        dotContainer.appendChild(dot);
+      }
+    }
+
+    updateCarousel();
   }
 
-  document.getElementById("carousel-prev").onclick = () => {
-    index = (index - 1 + images) % images;
-    updateCarousel();
-  };
-  document.getElementById("carousel-next").onclick = () => {
-    index = (index + 1) % images;
-    updateCarousel();
-  };
-
-  // creating dots for the carousel
-  const dotContainer = document.querySelector(".dots");
-  const slides = document.querySelectorAll(".slide");
-
-  const createDots = function () {
-    slides.forEach(function (_, i) {
-      dotContainer.insertAdjacentHTML(
-        "beforeend",
-        `<button class="dots__dot" data-slide="${i}"></button>`
-      );
+  // === OPERATIONS CAROUSEL (Mobile) ===
+  // Import the operations carousel only on mobile
+  if (window.innerWidth <= 768) {
+    import("./js/carousel.js").then((module) => {
+      console.log("Operations carousel loaded for mobile");
     });
-  };
-
-  const activateDot = function (slide) {
-    document
-      .querySelectorAll(".dots__dot")
-      .forEach((dot) => dot.classList.remove("dots__dot--active"));
-
-    document
-      .querySelector(`.dots__dot[data-slide="${slide}"]`)
-      .classList.add("dots__dot--active");
-  };
-
-  createDots();
-  activateDot(0);
-
-  // Touch/swipe support
-  let startX = 0;
-  track.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-  });
-  track.addEventListener("touchend", (e) => {
-    const endX = e.changedTouches[0].clientX;
-    if (endX - startX > 50) {
-      // swipe right
-      index = (index - 1 + images) % images;
-      updateCarousel();
-    } else if (startX - endX > 50) {
-      // swipe left
-      index = (index + 1) % images;
-      updateCarousel();
-    }
-  });
+  }
 });
