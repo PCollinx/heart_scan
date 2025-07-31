@@ -563,13 +563,13 @@ picture img {
   height: 100%;
   max-width: 33.333333%; // Prevent expansion
   overflow: hidden; // Prevent children from overflowing
-  
+
   // Make picture element fill the slide container
   picture {
     display: block;
     width: 100%;
     height: 100%;
-    
+
     img {
       width: 100%;
       height: 100%;
