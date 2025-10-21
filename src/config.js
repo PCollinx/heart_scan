@@ -12,7 +12,7 @@ export const config = {
   /**
    * Backend API endpoint URL
    */
-  API_ENDPOINT: "https://heart-disease-detector-lcij.onrender.com/predict",
+  API_ENDPOINT: "https://heart-disease-detector-lcij.onrender.com",
 
   /**
    * API endpoints paths
