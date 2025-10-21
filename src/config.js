@@ -15,7 +15,7 @@ export const config = {
   /**
    * Request timeout in milliseconds
    */
-  REQUEST_TIMEOUT: 30000, // 30 seconds
+  REQUEST_TIMEOUT: 120000, // 2 minutes
 
   /**
    * Enable debug logging
