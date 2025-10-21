@@ -6,7 +6,7 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/src/scss/main.scss" />
+  <link rel="stylesheet" href="/main.scss" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -15,263 +15,615 @@
   />
 </head>
 
-<body class="min-h-screen flex flex-col w-full">
-  <div id="navbar" class="flex"></div>
+<body class="min-h-screen flex flex-col w-full bg-white overflow-x-hidden">
+  <div id="navbar" class="flex w-full"></div>
   <div class="flex flex-col w-full">
-    <div class="flex-1 px-4 sm:px-6 lg:px-8">
-      <div class="flex my-12 flex-col w-full md:max-w-4xl mx-auto">
-        <h2
-          class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 py-6"
-        >
-          Input Your Health Details
-        </h2>
+    <div
+      class="flex-1 w-full py-6 sm:py-8 bg-gradient-to-b from-blue-50/30 to-white"
+    >
+      <!-- Page Header -->
+      <div
+        class="w-full px-3 sm:px-6 lg:max-w-5xl lg:mx-auto mb-4 sm:mb-6 mt-8 sm:mt-12"
+      >
+        <div class="text-center mb-4 sm:mb-6">
+          <h1
+            class="text-xl sm:text-2xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 px-2"
+          >
+            Heart Disease Risk Assessment
+          </h1>
+          <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+            Complete the form below with your health information. All fields are
+            required for an accurate prediction.
+          </p>
+        </div>
+
+        <!-- Progress Indicator -->
         <div
-          class="form-container w-full lg:max-w-[620px] mx-auto bg-white rounded-lg shadow p-6"
+          class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 sm:p-4 mb-4 sm:mb-6"
         >
-          <form class="space-y-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs sm:text-sm font-medium text-gray-700"
+              >Form Progress</span
+            >
+            <span
+              id="progress-text"
+              class="text-xs sm:text-sm font-medium text-blue-600"
+              >0 of 13 fields completed</span
+            >
+          </div>
+          <div class="w-full bg-blue-100 rounded-full h-2 sm:h-2.5">
+            <div
+              id="progress-bar"
+              class="bg-blue-600 h-2 sm:h-2.5 rounded-full transition-all duration-300"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Information Banner -->
+        <div
+          class="bg-blue-50 border-l-4 border-blue-500 p-3 sm:p-4 mb-4 sm:mb-6 rounded-r-lg"
+        >
+          <div class="flex items-start">
+            <span
+              class="material-symbols-outlined text-blue-500 mr-2 sm:mr-3 text-xl sm:text-2xl flex-shrink-0"
+              >info</span
+            >
             <div>
-              <label
-                for="age"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
-              >
-                Age
-              </label>
-              <input
-                id="age"
-                name="age"
-                type="number"
-                placeholder="Enter your age"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              />
+              <h3 class="text-sm sm:text-base font-semibold text-blue-800 mb-1">
+                Before You Begin
+              </h3>
+              <p class="text-xs sm:text-sm text-blue-700 leading-relaxed">
+                Hover over or tap the
+                <span class="material-symbols-outlined text-xs align-middle"
+                  >help</span
+                >
+                icon next to each field for detailed information. This
+                assessment is for educational purposes only and should not
+                replace professional medical advice.
+              </p>
             </div>
-            <div>
-              <label
-                for="sex"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full px-3 sm:px-6 lg:max-w-5xl lg:mx-auto">
+        <div
+          class="form-container bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 lg:p-8"
+        >
+          <form id="prediction-form" class="space-y-6 sm:space-y-8">
+            <!-- Section 1: Personal Information -->
+            <div class="form-section">
+              <h3
+                class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 pb-3 border-b-2 border-blue-100 flex items-center gap-2 sm:gap-3"
               >
-                Sex
-              </label>
-              <select
-                id="sex"
-                name="sex"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              >
-                <option value="">Select your sex</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+                <span
+                  class="material-symbols-outlined text-blue-600 text-xl sm:text-2xl"
+                  >person</span
+                >
+                <span>Personal Information</span>
+              </h3>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                <!-- Age -->
+                <div class="field-group">
+                  <label for="age" class="field-label">
+                    Age (in years)
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="age"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <input
+                    id="age"
+                    name="age"
+                    type="number"
+                    min="1"
+                    max="120"
+                    placeholder="e.g., 45"
+                    class="form-input"
+                    required
+                  />
+                  <small class="field-hint">Enter your age (1-120 years)</small>
+                  <div class="field-error" id="age-error"></div>
+                </div>
+
+                <!-- Sex -->
+                <div class="field-group">
+                  <label for="sex" class="field-label">
+                    Biological Sex
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="sex"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <select id="sex" name="sex" class="form-input" required>
+                    <option value="">-- Please select --</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                  </select>
+                  <small class="field-hint"
+                    >Select your biological sex as recorded in medical
+                    records</small
+                  >
+                  <div class="field-error" id="sex-error"></div>
+                </div>
+              </div>
             </div>
-            <div>
-              <label
-                for="chestPain"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
+
+            <!-- Section 2: Chest Pain & Heart Symptoms -->
+            <div class="form-section">
+              <h3
+                class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 pb-3 border-b-2 border-red-100 flex items-center gap-2 sm:gap-3"
               >
-                Chest Pain Type
-              </label>
-              <select
-                id="chestPain"
-                name="chestPain"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              >
-                <option value="">Select chest pain type</option>
-                <option value="typical">Typical Angina</option>
-                <option value="atypical">Atypical Angina</option>
-                <option value="non-anginal">Non-anginal Pain</option>
-                <option value="asymptomatic">Asymptomatic</option>
-              </select>
+                <span
+                  class="material-symbols-outlined text-red-600 text-xl sm:text-2xl"
+                  >favorite</span
+                >
+                <span>Chest Pain & Heart Symptoms</span>
+              </h3>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                <!-- Chest Pain Type -->
+                <div class="field-group">
+                  <label for="chestPain" class="field-label">
+                    Chest Pain Type
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="chestPain"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <select
+                    id="chestPain"
+                    name="chestPain"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">-- Please select --</option>
+                    <option value="typical">
+                      Typical Angina - Classic chest pain during exertion
+                    </option>
+                    <option value="atypical">
+                      Atypical Angina - Chest discomfort with unusual features
+                    </option>
+                    <option value="non-anginal">
+                      Non-anginal Pain - Chest pain not related to heart
+                    </option>
+                    <option value="asymptomatic">
+                      Asymptomatic - No chest pain
+                    </option>
+                  </select>
+                  <small class="field-hint"
+                    >Select the type of chest pain you experience, if any</small
+                  >
+                  <div class="field-error" id="chestPain-error"></div>
+                </div>
+
+                <!-- Exercise Angina -->
+                <div class="field-group">
+                  <label for="exerciseAngina" class="field-label">
+                    Exercise-Induced Angina
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="exerciseAngina"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <select
+                    id="exerciseAngina"
+                    name="exerciseAngina"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">-- Please select --</option>
+                    <option value="no">
+                      No - No chest pain during exercise
+                    </option>
+                    <option value="yes">
+                      Yes - Chest pain occurs during exercise
+                    </option>
+                  </select>
+                  <small class="field-hint"
+                    >Do you experience chest pain when exercising?</small
+                  >
+                  <div class="field-error" id="exerciseAngina-error"></div>
+                </div>
+              </div>
             </div>
-            <div>
-              <label
-                for="restingBloodPressure"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
+
+            <!-- Section 3: Blood Pressure & Blood Tests -->
+            <div class="form-section">
+              <h3
+                class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 pb-3 border-b-2 border-purple-100 flex items-center gap-2 sm:gap-3"
               >
-                Resting Blood Pressure
-              </label>
-              <input
-                id="restingBloodPressure"
-                name="restingBloodPressure"
-                type="number"
-                placeholder="Enter resting blood pressure"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              />
+                <span
+                  class="material-symbols-outlined text-purple-600 text-xl sm:text-2xl"
+                  >water_drop</span
+                >
+                <span>Blood Pressure & Laboratory Tests</span>
+              </h3>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                <!-- Resting Blood Pressure -->
+                <div class="field-group">
+                  <label for="restingBloodPressure" class="field-label">
+                    Resting Blood Pressure (mm Hg)
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="restingBloodPressure"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <input
+                    id="restingBloodPressure"
+                    name="restingBloodPressure"
+                    type="number"
+                    min="80"
+                    max="200"
+                    placeholder="e.g., 120"
+                    class="form-input"
+                    required
+                  />
+                  <small class="field-hint"
+                    >Enter your systolic blood pressure at rest (80-200 mm Hg).
+                    Normal is below 120.</small
+                  >
+                  <div
+                    class="field-error"
+                    id="restingBloodPressure-error"
+                  ></div>
+                </div>
+
+                <!-- Serum Cholesterol -->
+                <div class="field-group">
+                  <label for="serumCholesterol" class="field-label">
+                    Serum Cholesterol (mg/dl)
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="serumCholesterol"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <input
+                    id="serumCholesterol"
+                    name="serumCholesterol"
+                    type="number"
+                    min="100"
+                    max="600"
+                    placeholder="e.g., 200"
+                    class="form-input"
+                    required
+                  />
+                  <small class="field-hint"
+                    >Enter your total cholesterol level (100-600 mg/dl). Normal
+                    is below 200.</small
+                  >
+                  <div class="field-error" id="serumCholesterol-error"></div>
+                </div>
+
+                <!-- Fasting Blood Sugar -->
+                <div class="field-group">
+                  <label for="fastingBloodSugar" class="field-label">
+                    Fasting Blood Sugar Level
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="fastingBloodSugar"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <select
+                    id="fastingBloodSugar"
+                    name="fastingBloodSugar"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">-- Please select --</option>
+                    <option value="less_than_120">
+                      Less than or equal to 120 mg/dl (Normal)
+                    </option>
+                    <option value="greater_than_120">
+                      Greater than 120 mg/dl (Elevated)
+                    </option>
+                  </select>
+                  <small class="field-hint"
+                    >Select your fasting blood sugar level category</small
+                  >
+                  <div class="field-error" id="fastingBloodSugar-error"></div>
+                </div>
+              </div>
             </div>
-            <div>
-              <label
-                for="serumCholesterol"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
+
+            <!-- Section 4: Heart Function Tests -->
+            <div class="form-section">
+              <h3
+                class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 pb-3 border-b-2 border-green-100 flex items-center gap-2 sm:gap-3"
               >
-                Serum Cholesterol
-              </label>
-              <input
-                id="serumCholesterol"
-                name="serumCholesterol"
-                type="number"
-                placeholder="Enter serum cholesterol"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              />
+                <span
+                  class="material-symbols-outlined text-green-600 text-xl sm:text-2xl"
+                  >ecg_heart</span
+                >
+                <span>Heart Function & ECG Results</span>
+              </h3>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                <!-- Maximum Heart Rate -->
+                <div class="field-group">
+                  <label for="maxHeartRate" class="field-label">
+                    Maximum Heart Rate Achieved (bpm)
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="maxHeartRate"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <input
+                    id="maxHeartRate"
+                    name="maxHeartRate"
+                    type="number"
+                    min="60"
+                    max="220"
+                    placeholder="e.g., 150"
+                    class="form-input"
+                    required
+                  />
+                  <small class="field-hint"
+                    >Maximum heart rate during exercise test (60-220 bpm). Max
+                    typically = 220 - your age.</small
+                  >
+                  <div class="field-error" id="maxHeartRate-error"></div>
+                </div>
+
+                <!-- Resting ECG -->
+                <div class="field-group">
+                  <label for="restingECG" class="field-label">
+                    Resting Electrocardiogram (ECG) Results
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="restingECG"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <select
+                    id="restingECG"
+                    name="restingECG"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">-- Please select --</option>
+                    <option value="normal">
+                      Normal - No abnormalities detected
+                    </option>
+                    <option value="abnormal">
+                      Abnormal - ST-T wave abnormality or left ventricular
+                      hypertrophy
+                    </option>
+                  </select>
+                  <small class="field-hint"
+                    >Results from your resting electrocardiogram test</small
+                  >
+                  <div class="field-error" id="restingECG-error"></div>
+                </div>
+
+                <!-- ST Depression -->
+                <div class="field-group">
+                  <label for="stDepression" class="field-label">
+                    ST Depression (Oldpeak)
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="stDepression"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <input
+                    id="stDepression"
+                    name="stDepression"
+                    type="number"
+                    step="0.1"
+                    min="0"
+                    max="10"
+                    placeholder="e.g., 2.3"
+                    class="form-input"
+                    required
+                  />
+                  <small class="field-hint"
+                    >ST depression induced by exercise relative to rest (0-10).
+                    A value of 0 is normal.</small
+                  >
+                  <div class="field-error" id="stDepression-error"></div>
+                </div>
+
+                <!-- Slope -->
+                <div class="field-group">
+                  <label for="slopeSTSegment" class="field-label">
+                    Slope of Peak Exercise ST Segment
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="slopeSTSegment"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <select
+                    id="slopeSTSegment"
+                    name="slopeSTSegment"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">-- Please select --</option>
+                    <option value="upsloping">
+                      Upsloping - Rising ST segment (typically normal)
+                    </option>
+                    <option value="flat">Flat - Level ST segment</option>
+                    <option value="downsloping">
+                      Downsloping - Declining ST segment (concerning)
+                    </option>
+                  </select>
+                  <small class="field-hint"
+                    >The shape of your ST segment during peak exercise</small
+                  >
+                  <div class="field-error" id="slopeSTSegment-error"></div>
+                </div>
+              </div>
             </div>
-            <div>
-              <label
-                for="fastingBloodSugar"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
+
+            <!-- Section 5: Advanced Cardiac Tests -->
+            <div class="form-section">
+              <h3
+                class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6 pb-3 border-b-2 border-indigo-100 flex items-center gap-2 sm:gap-3"
               >
-                Fasting Blood Sugar
-              </label>
-              <select
-                id="fastingBloodSugar"
-                name="fastingBloodSugar"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              >
-                <option value="">Select fasting blood sugar</option>
-                <option value="greater_than_120">Greater than 120 mg/dl</option>
-                <option value="less_than_120">Less than 120 mg/dl</option>
-              </select>
+                <span
+                  class="material-symbols-outlined text-indigo-600 text-xl sm:text-2xl"
+                  >science</span
+                >
+                <span>Advanced Cardiac Tests</span>
+              </h3>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                <!-- Number of Major Vessels -->
+                <div class="field-group">
+                  <label for="numMajorVessels" class="field-label">
+                    Number of Major Vessels (Fluoroscopy)
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="numMajorVessels"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <input
+                    id="numMajorVessels"
+                    name="numMajorVessels"
+                    type="number"
+                    min="0"
+                    max="4"
+                    placeholder="e.g., 0"
+                    class="form-input"
+                    required
+                  />
+                  <small class="field-hint"
+                    >Number of major blood vessels (0-4) visible on fluoroscopy.
+                    Enter 0 if test not done.</small
+                  >
+                  <div class="field-error" id="numMajorVessels-error"></div>
+                </div>
+
+                <!-- Thalassemia -->
+                <div class="field-group">
+                  <label for="thalassemia" class="field-label">
+                    Thalassemia (Blood Disorder Status)
+                    <button
+                      type="button"
+                      class="tooltip-trigger"
+                      data-tooltip="thalassemia"
+                    >
+                      <span class="material-symbols-outlined">help</span>
+                    </button>
+                  </label>
+                  <select
+                    id="thalassemia"
+                    name="thalassemia"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">-- Please select --</option>
+                    <option value="normal">Normal - No thalassemia</option>
+                    <option value="carrier">
+                      Fixed Defect - Permanent defect from past damage
+                    </option>
+                    <option value="deficient">
+                      Reversible Defect - Temporary defect, may improve
+                    </option>
+                  </select>
+                  <small class="field-hint"
+                    >Thalassemia test results showing blood perfusion
+                    status</small
+                  >
+                  <div class="field-error" id="thalassemia-error"></div>
+                </div>
+              </div>
             </div>
-            <div>
-              <label
-                for="restingECG"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
+
+            <!-- Submit Section -->
+            <div
+              class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6 sm:pt-8 border-t-2 border-gray-100"
+            >
+              <button
+                type="button"
+                id="reset-btn"
+                class="flex items-center justify-center gap-2 rounded-lg h-12 sm:h-13 px-6 sm:px-8 border-2 border-gray-300 bg-white text-gray-700 text-sm sm:text-base font-semibold hover:bg-gray-50 hover:border-gray-400 active:bg-gray-100 transition-all duration-200 cursor-pointer shadow-sm hover:shadow"
               >
-                Resting Electrocardiographic Results
-              </label>
-              <select
-                id="restingECG"
-                name="restingECG"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              >
-                <option value="">
-                  Select resting electrocardiographic results
-                </option>
-                <option value="normal">Normal</option>
-                <option value="abnormal">Abnormal</option>
-              </select>
-            </div>
-            <div>
-              <label
-                for="maxHeartRate"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
-              >
-                Maximum Heart Rate Achieved
-              </label>
-              <input
-                id="maxHeartRate"
-                name="maxHeartRate"
-                type="number"
-                placeholder="Enter maximum heart rate achieved"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              />
-            </div>
-            <div>
-              <label
-                for="exerciseAngina"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
-              >
-                Exercise-Induced Angina
-              </label>
-              <select
-                id="exerciseAngina"
-                name="exerciseAngina"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              >
-                <option value="">Select exercise-induced angina</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-            <div>
-              <label
-                for="stDepression"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
-              >
-                ST Depression
-              </label>
-              <input
-                id="stDepression"
-                name="stDepression"
-                type="number"
-                placeholder="Enter ST depression"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              />
-            </div>
-            <div>
-              <label
-                for="slopeSTSegment"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
-              >
-                Slope of Peak Exercise ST Segment
-              </label>
-              <select
-                id="slopeSTSegment"
-                name="slopeSTSegment"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              >
-                <option value="">
-                  Select slope of peak exercise ST segment
-                </option>
-                <option value="upsloping">Upsloping</option>
-                <option value="flat">Flat</option>
-                <option value="downsloping">Downsloping</option>
-              </select>
-            </div>
-            <div>
-              <label
-                for="numMajorVessels"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
-              >
-                Number of Major Vessels
-              </label>
-              <input
-                id="numMajorVessels"
-                name="numMajorVessels"
-                type="number"
-                placeholder="Enter number of major vessels"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              />
-            </div>
-            <div>
-              <label
-                for="thalassemia"
-                class="block text-[#111518] text-base font-medium leading-normal pb-2"
-              >
-                Thalassemia
-              </label>
-              <select
-                id="thalassemia"
-                name="thalassemia"
-                class="form-input w-full resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border border-[#dce1e5] bg-white focus:border-[#1982e5] h-14 placeholder:text-[#637688] p-[15px] text-base font-normal leading-normal"
-                required
-              >
-                <option value="">Select thalassemia</option>
-                <option value="normal">Normal</option>
-                <option value="carrier">Carrier</option>
-                <option value="deficient">Deficient</option>
-              </select>
-            </div>
-            <div class="flex">
+                <span class="material-symbols-outlined text-lg sm:text-xl"
+                  >refresh</span
+                >
+                <span>Reset Form</span>
+              </button>
               <button
                 type="submit"
-                class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-700! text-white text-sm font-bold leading-normal tracking-[0.015em]"
+                id="submit-btn"
+                class="flex-1 flex items-center justify-center gap-2 rounded-lg h-12 sm:h-13 px-6 sm:px-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm sm:text-base font-bold hover:from-blue-700 hover:to-blue-800 active:from-blue-800 active:to-blue-900 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
               >
-                <span class="truncate">Predict</span>
+                <span class="material-symbols-outlined text-lg sm:text-xl"
+                  >analytics</span
+                >
+                <span id="submit-text">Analyze Risk</span>
               </button>
             </div>
           </form>
         </div>
       </div>
     </div>
+
+    <!-- Tooltip Modal -->
+    <div id="tooltip-modal" class="tooltip-modal hidden">
+      <div class="tooltip-modal-overlay"></div>
+      <div class="tooltip-modal-content">
+        <div class="tooltip-modal-header">
+          <h4
+            id="tooltip-title"
+            class="text-lg font-semibold text-gray-900"
+          ></h4>
+          <button type="button" id="tooltip-close" class="tooltip-close">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div id="tooltip-body" class="tooltip-modal-body"></div>
+      </div>
+    </div>
+
     <div id="footer"></div>
     <script type="module" src="/src/main.js" defer></script>
+    <script type="module">
+      import { initPredictionForm } from "/src/js/predict.js";
+
+      // Initialize prediction form when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        initPredictionForm();
+      });
+    </script>
   </div>
 </body>

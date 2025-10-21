@@ -1,5 +1,6 @@
 @use "./functions.scss" as f;
 @use "sass:math";
+@use "sass:map";
 
 $breakpoints: (
   "xs": 359px,
@@ -11,13 +12,13 @@ $breakpoints: (
 );
 
 @mixin breakpoints($size) {
-  @media (min-width: map-get($breakpoints, $size)) {
+  @media (min-width: map.get($breakpoints, $size)) {
     @content;
   }
 }
 
 @mixin breakpoint-down($size) {
-  @media (max-width: map-get($breakpoints, $size)) {
+  @media (max-width: map.get($breakpoints, $size)) {
     @content;
   }
 }

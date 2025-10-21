@@ -18,25 +18,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    menuToggle?.addEventListener("click", () => {
-      console.log("clicked");
-      mobileMenu.classList.toggle("hidden");
-    });
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log("Menu toggle clicked");
+        console.log("Menu current state:", mobileMenu.classList.contains("hidden") ? "hidden" : "visible");
+        
+        mobileMenu.classList.toggle("hidden");
+        
+        console.log("Menu new state:", mobileMenu.classList.contains("hidden") ? "hidden" : "visible");
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          !mobileMenu.classList.contains("hidden") &&
+          !mobileMenu.contains(e.target) &&
+          !menuToggle.contains(e.target)
+        ) {
+          console.log("Closing menu - clicked outside");
+          mobileMenu.classList.add("hidden");
+        }
+      });
+    } else {
+      console.error("Menu toggle or mobile menu not found");
+      console.log("menuToggle:", menuToggle);
+      console.log("mobileMenu:", mobileMenu);
+    }
+    
     // Load carousel functionality
     if (window.innerWidth <= 768) {
       import("./js/carousel.js");
     }
-
-    document.addEventListener("click", (e) => {
-      if (
-        mobileMenu &&
-        !mobileMenu.classList.contains("hidden") &&
-        !mobileMenu.contains(e.target) &&
-        e.target !== menuToggle
-      ) {
-        mobileMenu.classList.add("hidden");
-      }
-    });
   });
 
   const tabs = document.querySelectorAll(".operations__tab");
