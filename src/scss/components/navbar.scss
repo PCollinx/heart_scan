@@ -62,3 +62,16 @@
     }
   }
 }
+
+// Mobile menu toggle button
+#menu-toggle {
+  background-color: transparent !important;
+
+  &:hover {
+    background-color: rgba(239, 246, 255, 1) !important; // blue-50
+  }
+
+  &:active {
+    background-color: rgba(219, 234, 254, 1) !important; // blue-100
+  }
+}

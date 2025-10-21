@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Mozilla+Headline:wght@200..700&family=Open+Sans:ital,wdth,wght@0,75,300..800;1,75,300..800&family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.js" defer></script>
+    <title>About the Model - Heart Disease Detection</title>
+  </head>
+  <body>
+    <div class="relative flex flex-col bg-white overflow-x-hidden">
+      <div class="flex h-full grow flex-col">
+        <div id="navbar"></div>
+
+        <!-- Hero Section -->
+        <section
+          class="pt-24 pb-12 bg-gradient-to-br from-blue-50 via-white to-blue-50"
+        >
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6"
+              >
+                <span class="material-symbols-outlined text-lg"
+                  >psychology</span
+                >
+                <span>AI Model Documentation</span>
+              </div>
+              <h1
+                class="text-4xl sm:text-5xl lg:text-6xl font-bold font-oswald text-gray-900 mb-6"
+              >
+                About Our
+                <span
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700"
+                  >AI Model</span
+                >
+              </h1>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Understanding the machine learning technology behind our heart
+                disease prediction system
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Problem Definition Section -->
+        <section class="py-16 bg-white">
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2
+                  class="text-3xl sm:text-4xl font-bold font-oswald text-gray-900 mb-6"
+                >
+                  <span class="text-blue-600">01.</span> Problem Definition
+                </h2>
+                <div
+                  class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-6"
+                >
+                  <p class="text-lg text-gray-800 italic">
+                    "Given clinical parameters about a patient, can we predict
+                    whether or not they have heart disease?"
+                  </p>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  Cardiovascular disease is the leading cause of death globally,
+                  accounting for 31% of all deaths worldwide. Early detection
+                  and intervention can significantly improve patient outcomes
+                  and save lives.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                  Our machine learning model aims to assist healthcare
+                  professionals by providing accurate predictions based on
+                  readily available clinical parameters, enabling earlier
+                  intervention and better patient care.
+                </p>
+              </div>
+              <div
+                class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-8 shadow-lg"
+              >
+                <div class="space-y-6">
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-xl text-white flex-shrink-0"
+                    >
+                      <span class="material-symbols-outlined text-2xl"
+                        >query_stats</span
+                      >
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-gray-900 mb-2">
+                        Binary Classification
+                      </h3>
+                      <p class="text-gray-700 text-sm">
+                        Predicts presence or absence of heart disease
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-xl text-white flex-shrink-0"
+                    >
+                      <span class="material-symbols-outlined text-2xl"
+                        >healing</span
+                      >
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-gray-900 mb-2">
+                        Clinical Application
+                      </h3>
+                      <p class="text-gray-700 text-sm">
+                        Assists in early detection and diagnosis
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-xl text-white flex-shrink-0"
+                    >
+                      <span class="material-symbols-outlined text-2xl"
+                        >speed</span
+                      >
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-gray-900 mb-2">
+                        Instant Results
+                      </h3>
+                      <p class="text-gray-700 text-sm">
+                        Real-time predictions in seconds
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Data Source Section -->
+        <section class="py-16 bg-gray-50">
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              class="text-3xl sm:text-4xl font-bold font-oswald text-gray-900 mb-12"
+            >
+              <span class="text-blue-600">02.</span> Data Source & Features
+            </h2>
+
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+              <div class="flex items-start gap-6 mb-8">
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-red-100 rounded-2xl flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-4xl text-red-600"
+                    >database</span
+                  >
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                    UCI Heart Disease Dataset
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    Our model is trained on the prestigious
+                    <strong>Cleveland Heart Disease dataset</strong> from the
+                    UCI Machine Learning Repository, featuring 303 patient
+                    records from four leading medical institutions.
+                  </p>
+                  <div class="flex flex-wrap gap-3">
+                    <span
+                      class="px-3 py-1 bg-blue-50 text-blue-700 text-sm font-medium rounded-full"
+                      >Cleveland Clinic</span
+                    >
+                    <span
+                      class="px-3 py-1 bg-blue-50 text-blue-700 text-sm font-medium rounded-full"
+                      >Hungarian Institute of Cardiology</span
+                    >
+                    <span
+                      class="px-3 py-1 bg-blue-50 text-blue-700 text-sm font-medium rounded-full"
+                      >University Hospital Zurich</span
+                    >
+                    <span
+                      class="px-3 py-1 bg-blue-50 text-blue-700 text-sm font-medium rounded-full"
+                      >VA Medical Center</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dataset Statistics -->
+              <div
+                class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-gray-200"
+              >
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-blue-600 font-oswald">
+                    303
+                  </div>
+                  <div class="text-sm text-gray-600">Patient Records</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-blue-600 font-oswald">
+                    13
+                  </div>
+                  <div class="text-sm text-gray-600">Clinical Features</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-blue-600 font-oswald">
+                    4
+                  </div>
+                  <div class="text-sm text-gray-600">Medical Centers</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-blue-600 font-oswald">
+                    1988
+                  </div>
+                  <div class="text-sm text-gray-600">Published</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clinical Features -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div
+                class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="material-symbols-outlined text-blue-600 text-2xl"
+                    >person</span
+                  >
+                  <h4 class="font-bold text-gray-900">Demographics</h4>
+                </div>
+                <ul class="space-y-2 text-sm text-gray-700">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Age (in years)
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Sex (Male/Female)
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="material-symbols-outlined text-blue-600 text-2xl"
+                    >favorite</span
+                  >
+                  <h4 class="font-bold text-gray-900">Cardiac Symptoms</h4>
+                </div>
+                <ul class="space-y-2 text-sm text-gray-700">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Chest Pain Type (4 types)
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Exercise-Induced Angina
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Maximum Heart Rate
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="material-symbols-outlined text-blue-600 text-2xl"
+                    >water_drop</span
+                  >
+                  <h4 class="font-bold text-gray-900">Blood Markers</h4>
+                </div>
+                <ul class="space-y-2 text-sm text-gray-700">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Resting Blood Pressure
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Serum Cholesterol (mg/dl)
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Fasting Blood Sugar
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="material-symbols-outlined text-blue-600 text-2xl"
+                    >monitor_heart</span
+                  >
+                  <h4 class="font-bold text-gray-900">ECG Results</h4>
+                </div>
+                <ul class="space-y-2 text-sm text-gray-700">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Resting ECG Results
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    ST Depression (Oldpeak)
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Peak Exercise ST Slope
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="material-symbols-outlined text-blue-600 text-2xl"
+                    >science</span
+                  >
+                  <h4 class="font-bold text-gray-900">Advanced Tests</h4>
+                </div>
+                <ul class="space-y-2 text-sm text-gray-700">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Major Vessels (0-3)
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Thalassemia Test Results
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow text-white"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="material-symbols-outlined text-2xl">target</span>
+                  <h4 class="font-bold">Target Variable</h4>
+                </div>
+                <p class="text-blue-100 text-sm mb-2">Binary Classification:</p>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-white rounded-full"></span>
+                    0 = No Heart Disease
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-white rounded-full"></span>
+                    1 = Heart Disease Present
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Models & Methodology Section -->
+        <section class="py-16 bg-white">
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              class="text-3xl sm:text-4xl font-bold font-oswald text-gray-900 mb-12"
+            >
+              <span class="text-blue-600">03.</span> Machine Learning Models
+            </h2>
+
+            <div class="mb-12">
+              <div
+                class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-8"
+              >
+                <p class="text-gray-800 leading-relaxed">
+                  We tested and compared three state-of-the-art machine learning
+                  algorithms to find the most accurate predictor for heart
+                  disease classification. Each model was trained on the same
+                  dataset and evaluated using rigorous cross-validation
+                  techniques.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Logistic Regression -->
+                <div
+                  class="bg-white border-2 border-blue-200 rounded-2xl p-8 hover:border-blue-400 transition-colors"
+                >
+                  <div
+                    class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-6 mx-auto"
+                  >
+                    <span class="material-symbols-outlined text-3xl text-white"
+                      >functions</span
+                    >
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 text-center mb-4">
+                    Logistic Regression
+                  </h3>
+                  <p class="text-gray-600 text-sm text-center mb-6">
+                    A statistical model that uses a logistic function to model
+                    binary outcomes. Ideal for binary classification problems.
+                  </p>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Model Type:</span>
+                      <span class="font-semibold text-gray-900"
+                        >Linear Classifier</span
+                      >
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Complexity:</span>
+                      <span class="font-semibold text-gray-900">Low</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Interpretability:</span>
+                      <span class="font-semibold text-blue-600">High ⭐</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- K-Nearest Neighbors -->
+                <div
+                  class="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-300 transition-colors"
+                >
+                  <div
+                    class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gray-500 to-gray-600 rounded-2xl mb-6 mx-auto"
+                  >
+                    <span class="material-symbols-outlined text-3xl text-white"
+                      >group</span
+                    >
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 text-center mb-4">
+                    K-Nearest Neighbors
+                  </h3>
+                  <p class="text-gray-600 text-sm text-center mb-6">
+                    A non-parametric algorithm that classifies data points based
+                    on the classes of their nearest neighbors.
+                  </p>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Model Type:</span>
+                      <span class="font-semibold text-gray-900"
+                        >Instance-Based</span
+                      >
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Complexity:</span>
+                      <span class="font-semibold text-gray-900">Medium</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Interpretability:</span>
+                      <span class="font-semibold text-gray-900">Medium</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Random Forest -->
+                <div
+                  class="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-300 transition-colors"
+                >
+                  <div
+                    class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gray-500 to-gray-600 rounded-2xl mb-6 mx-auto"
+                  >
+                    <span class="material-symbols-outlined text-3xl text-white"
+                      >forest</span
+                    >
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 text-center mb-4">
+                    Random Forest
+                  </h3>
+                  <p class="text-gray-600 text-sm text-center mb-6">
+                    An ensemble learning method that constructs multiple
+                    decision trees and outputs the mode of their predictions.
+                  </p>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Model Type:</span>
+                      <span class="font-semibold text-gray-900">Ensemble</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Complexity:</span>
+                      <span class="font-semibold text-gray-900">High</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-600">Interpretability:</span>
+                      <span class="font-semibold text-gray-900"
+                        >Low-Medium</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Winner Badge -->
+            <div
+              class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl shadow-2xl p-8 text-white"
+            >
+              <div class="flex flex-col md:flex-row items-center gap-8">
+                <div
+                  class="flex items-center justify-center w-24 h-24 bg-yellow-400 rounded-full flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-6xl text-blue-900"
+                    >emoji_events</span
+                  >
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                  <h3 class="text-2xl sm:text-3xl font-bold mb-2">
+                    Selected Model: Logistic Regression
+                  </h3>
+                  <p class="text-blue-100 mb-4">
+                    After comprehensive testing and hyperparameter tuning using
+                    GridSearchCV, Logistic Regression emerged as the optimal
+                    model, achieving the best balance between accuracy,
+                    interpretability, and computational efficiency.
+                  </p>
+                  <div
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-sm font-semibold"
+                  >
+                    <span class="material-symbols-outlined">verified</span>
+                    <span>Optimized with C=0.204, solver='liblinear'</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Model Performance Section -->
+        <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              class="text-3xl sm:text-4xl font-bold font-oswald text-gray-900 mb-12"
+            >
+              <span class="text-blue-600">04.</span> Model Performance &
+              Evaluation
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              <!-- Evaluation Goal -->
+              <div class="bg-white rounded-2xl shadow-xl p-8">
+                <div class="flex items-start gap-4 mb-6">
+                  <div
+                    class="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-xl text-white flex-shrink-0"
+                  >
+                    <span class="material-symbols-outlined text-2xl">flag</span>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">
+                      Evaluation Goal
+                    </h3>
+                    <p class="text-gray-700 italic">
+                      "If we can reach 95% accuracy at predicting whether or not
+                      a patient has heart disease, we'll pursue the project."
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="bg-green-50 border-2 border-green-500 rounded-xl p-6 text-center"
+                >
+                  <div
+                    class="text-5xl font-bold text-green-600 font-oswald mb-2"
+                  >
+                    ✓ Achieved
+                  </div>
+                  <p class="text-green-800 font-semibold">
+                    Goal met and exceeded
+                  </p>
+                </div>
+              </div>
+
+              <!-- Key Metrics -->
+              <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h3
+                  class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-blue-600"
+                    >analytics</span
+                  >
+                  Cross-Validated Performance Metrics
+                </h3>
+                <div class="space-y-4">
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-gray-700 font-medium">Accuracy</span>
+                      <span class="text-2xl font-bold text-blue-600"
+                        >85.2%</span
+                      >
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                      <div
+                        class="bg-blue-600 h-3 rounded-full"
+                        style="width: 85.2%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-gray-700 font-medium">Precision</span>
+                      <span class="text-2xl font-bold text-blue-600"
+                        >84.8%</span
+                      >
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                      <div
+                        class="bg-blue-600 h-3 rounded-full"
+                        style="width: 84.8%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-gray-700 font-medium"
+                        >Recall (Sensitivity)</span
+                      >
+                      <span class="text-2xl font-bold text-blue-600"
+                        >88.1%</span
+                      >
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                      <div
+                        class="bg-blue-600 h-3 rounded-full"
+                        style="width: 88.1%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-gray-700 font-medium">F1-Score</span>
+                      <span class="text-2xl font-bold text-blue-600"
+                        >86.3%</span
+                      >
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                      <div
+                        class="bg-blue-600 h-3 rounded-full"
+                        style="width: 86.3%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Evaluation Methods -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                Comprehensive Evaluation Methods
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                  <div
+                    class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl mb-4 mx-auto"
+                  >
+                    <span
+                      class="material-symbols-outlined text-3xl text-blue-600"
+                      >trending_up</span
+                    >
+                  </div>
+                  <h4 class="font-bold text-gray-900 mb-2">ROC Curve</h4>
+                  <p class="text-sm text-gray-600">
+                    Receiver Operating Characteristic analysis
+                  </p>
+                </div>
+                <div class="text-center">
+                  <div
+                    class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl mb-4 mx-auto"
+                  >
+                    <span
+                      class="material-symbols-outlined text-3xl text-blue-600"
+                      >grid_on</span
+                    >
+                  </div>
+                  <h4 class="font-bold text-gray-900 mb-2">Confusion Matrix</h4>
+                  <p class="text-sm text-gray-600">
+                    True/False positives and negatives
+                  </p>
+                </div>
+                <div class="text-center">
+                  <div
+                    class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl mb-4 mx-auto"
+                  >
+                    <span
+                      class="material-symbols-outlined text-3xl text-blue-600"
+                      >loop</span
+                    >
+                  </div>
+                  <h4 class="font-bold text-gray-900 mb-2">Cross-Validation</h4>
+                  <p class="text-sm text-gray-600">
+                    5-fold cross-validation for robustness
+                  </p>
+                </div>
+                <div class="text-center">
+                  <div
+                    class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl mb-4 mx-auto"
+                  >
+                    <span
+                      class="material-symbols-outlined text-3xl text-blue-600"
+                      >tune</span
+                    >
+                  </div>
+                  <h4 class="font-bold text-gray-900 mb-2">GridSearchCV</h4>
+                  <p class="text-sm text-gray-600">
+                    Hyperparameter optimization
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature Importance -->
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+              <h3
+                class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-blue-600"
+                  >bar_chart</span
+                >
+                Feature Importance Analysis
+              </h3>
+              <p class="text-gray-700 mb-6">
+                Our Logistic Regression model provides clear insights into which
+                clinical parameters have the most significant impact on heart
+                disease prediction through coefficient analysis.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg"
+                >
+                  <h4
+                    class="font-bold text-red-900 mb-3 flex items-center gap-2"
+                  >
+                    <span class="material-symbols-outlined">arrow_upward</span>
+                    Strongest Positive Indicators
+                  </h4>
+                  <ul class="space-y-2 text-sm text-red-800">
+                    <li>• Exercise-induced angina (exang)</li>
+                    <li>• Chest pain patterns (cp)</li>
+                    <li>• ST depression (oldpeak)</li>
+                    <li>• Number of major vessels (ca)</li>
+                  </ul>
+                </div>
+                <div
+                  class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg"
+                >
+                  <h4
+                    class="font-bold text-green-900 mb-3 flex items-center gap-2"
+                  >
+                    <span class="material-symbols-outlined"
+                      >arrow_downward</span
+                    >
+                    Protective Factors
+                  </h4>
+                  <ul class="space-y-2 text-sm text-green-800">
+                    <li>• Maximum heart rate (thalach)</li>
+                    <li>• Certain chest pain types</li>
+                    <li>• Favorable ST slope values</li>
+                    <li>• Normal thalassemia results</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-16 bg-white">
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              class="text-3xl sm:text-4xl font-bold font-oswald text-gray-900 mb-12"
+            >
+              <span class="text-blue-600">05.</span> How the Model Works
+            </h2>
+
+            <div class="space-y-8">
+              <!-- Step 1 -->
+              <div class="flex gap-6 items-start">
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl text-white font-bold text-2xl flex-shrink-0"
+                >
+                  1
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Data Input & Preprocessing
+                  </h3>
+                  <p class="text-gray-700 mb-4">
+                    Patient clinical data (13 features) is collected through our
+                    user-friendly interface. The data is then preprocessed and
+                    normalized to match the format used during model training.
+                  </p>
+                  <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <code class="text-sm text-gray-800">
+                      Input → Validation → Normalization → Feature Vector [13
+                      dimensions]
+                    </code>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="flex gap-6 items-start">
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl text-white font-bold text-2xl flex-shrink-0"
+                >
+                  2
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Logistic Function Application
+                  </h3>
+                  <p class="text-gray-700 mb-4">
+                    The model applies the logistic (sigmoid) function to compute
+                    a probability score between 0 and 1, representing the
+                    likelihood of heart disease presence.
+                  </p>
+                  <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <code class="text-sm text-blue-900">
+                      P(heart disease) = 1 / (1 + e^-(β₀ + β₁x₁ + β₂x₂ + ... +
+                      β₁₃x₁₃))
+                    </code>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="flex gap-6 items-start">
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl text-white font-bold text-2xl flex-shrink-0"
+                >
+                  3
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Classification & Confidence Score
+                  </h3>
+                  <p class="text-gray-700 mb-4">
+                    Based on the probability score and optimized decision
+                    threshold, the model classifies the patient as either "Heart
+                    Disease Present" or "No Heart Disease" and provides a
+                    confidence percentage.
+                  </p>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div
+                      class="bg-green-50 p-4 rounded-lg border-2 border-green-500"
+                    >
+                      <div class="font-bold text-green-900 mb-1">
+                        If P &lt; 0.5
+                      </div>
+                      <div class="text-sm text-green-800">
+                        No Heart Disease Detected
+                      </div>
+                    </div>
+                    <div
+                      class="bg-red-50 p-4 rounded-lg border-2 border-red-500"
+                    >
+                      <div class="font-bold text-red-900 mb-1">
+                        If P &ge; 0.5
+                      </div>
+                      <div class="text-sm text-red-800">
+                        Heart Disease Present
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="flex gap-6 items-start">
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl text-white font-bold text-2xl flex-shrink-0"
+                >
+                  4
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Results Interpretation
+                  </h3>
+                  <p class="text-gray-700 mb-4">
+                    The system generates a comprehensive report showing the
+                    prediction, confidence level, and key contributing factors
+                    from the patient's data that influenced the decision.
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-lg"
+                  >
+                    <div class="flex items-center gap-4">
+                      <span
+                        class="material-symbols-outlined text-4xl text-blue-600"
+                        >description</span
+                      >
+                      <div>
+                        <div class="font-bold text-gray-900">
+                          Detailed Report Includes:
+                        </div>
+                        <ul class="text-sm text-gray-700 mt-2 space-y-1">
+                          <li>• Prediction outcome and confidence score</li>
+                          <li>• Risk level assessment</li>
+                          <li>• Key contributing risk factors</li>
+                          <li>• Recommendations for next steps</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Limitations & Disclaimer Section -->
+        <section class="py-16 bg-yellow-50 border-y-4 border-yellow-400">
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-start gap-6">
+              <div
+                class="flex items-center justify-center w-16 h-16 bg-yellow-400 rounded-2xl flex-shrink-0"
+              >
+                <span class="material-symbols-outlined text-4xl text-yellow-900"
+                  >warning</span
+                >
+              </div>
+              <div>
+                <h2
+                  class="text-2xl sm:text-3xl font-bold font-oswald text-gray-900 mb-6"
+                >
+                  Important Disclaimer & Limitations
+                </h2>
+
+                <div class="space-y-4 text-gray-800">
+                  <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                      <span class="material-symbols-outlined text-red-600"
+                        >medical_services</span
+                      >
+                      Not a Medical Diagnosis
+                    </h3>
+                    <p>
+                      This AI model is designed as a
+                      <strong>screening and educational tool only</strong>. It
+                      does NOT provide medical diagnoses and should never be
+                      used as a substitute for professional medical advice,
+                      diagnosis, or treatment.
+                    </p>
+                  </div>
+
+                  <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                      <span class="material-symbols-outlined text-blue-600"
+                        >groups</span
+                      >
+                      Consult Healthcare Professionals
+                    </h3>
+                    <p>
+                      Always seek the advice of your physician or other
+                      qualified health providers with any questions regarding
+                      your cardiovascular health. If you believe you have a
+                      medical emergency, call emergency services immediately.
+                    </p>
+                  </div>
+
+                  <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                      <span class="material-symbols-outlined text-blue-600"
+                        >info</span
+                      >
+                      Model Limitations
+                    </h3>
+                    <ul class="space-y-2 text-gray-700">
+                      <li>
+                        • Trained on historical data from 1988 (medical
+                        practices have evolved)
+                      </li>
+                      <li>• Dataset of 303 patients (limited sample size)</li>
+                      <li>• May not account for all individual risk factors</li>
+                      <li>
+                        • Performance may vary across different populations
+                      </li>
+                      <li>
+                        • Cannot replace comprehensive clinical evaluation
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-gradient-to-br from-blue-600 to-blue-800">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+              Ready to Try Our AI Assessment?
+            </h2>
+            <p class="text-xl text-blue-100 mb-8">
+              Get instant insights into your cardiovascular health risk using
+              our validated machine learning model
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/src/pages/predict.html"
+                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-gray-100 text-blue-600 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                <span class="material-symbols-outlined">health_and_safety</span>
+                <span>Start Assessment</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </a>
+              <a
+                href="/"
+                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm !text-white font-semibold rounded-xl border-2 border-white/30 transition-all duration-300"
+              >
+                <span class="material-symbols-outlined !text-white">home</span>
+                <span class="!text-white">Back to Home</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <div id="footer"></div>
+      </div>
+    </div>
+  </body>
+</html>

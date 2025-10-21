@@ -1,14 +1,4 @@
-/**
- * Configuration file for Heart Disease Prediction App
- *
- * Update the API_ENDPOINT with your backend URL
- */
-
 export const config = {
-  // ========================================
-  // API Configuration
-  // ========================================
-
   /**
    * Backend API endpoint URL
    */
@@ -31,10 +21,6 @@ export const config = {
    * Enable debug logging
    */
   DEBUG: true,
-
-  // ========================================
-  // Application Settings
-  // ========================================
 
   /**
    * Form validation settings

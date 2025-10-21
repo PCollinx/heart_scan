@@ -17,18 +17,25 @@ document.addEventListener("DOMContentLoaded", () => {
   loadComponent("navbar", "/src/components/navbar.html", () => {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
 
-    if (menuToggle && mobileMenu) {
+    if (menuToggle && mobileMenu && menuIcon) {
       menuToggle.addEventListener("click", (e) => {
         e.stopPropagation();
-        console.log("Menu toggle clicked");
-        console.log("Menu current state:", mobileMenu.classList.contains("hidden") ? "hidden" : "visible");
-        
+        const isHidden = mobileMenu.classList.contains("hidden");
+
         mobileMenu.classList.toggle("hidden");
-        
-        console.log("Menu new state:", mobileMenu.classList.contains("hidden") ? "hidden" : "visible");
+
+        // Toggle icon between menu and close
+        if (isHidden) {
+          menuIcon.textContent = "close";
+          menuToggle.setAttribute("aria-expanded", "true");
+        } else {
+          menuIcon.textContent = "menu";
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
       });
-      
+
       // Close menu when clicking outside
       document.addEventListener("click", (e) => {
         if (
@@ -36,16 +43,25 @@ document.addEventListener("DOMContentLoaded", () => {
           !mobileMenu.contains(e.target) &&
           !menuToggle.contains(e.target)
         ) {
-          console.log("Closing menu - clicked outside");
           mobileMenu.classList.add("hidden");
+          menuIcon.textContent = "menu";
+          menuToggle.setAttribute("aria-expanded", "false");
         }
       });
+
+      // Close menu when clicking on a menu link
+      const menuLinks = mobileMenu.querySelectorAll("a");
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuIcon.textContent = "menu";
+          menuToggle.setAttribute("aria-expanded", "false");
+        });
+      });
     } else {
-      console.error("Menu toggle or mobile menu not found");
-      console.log("menuToggle:", menuToggle);
-      console.log("mobileMenu:", mobileMenu);
+      console.error("Menu toggle, mobile menu, or menu icon not found");
     }
-    
+
     // Load carousel functionality
     if (window.innerWidth <= 768) {
       import("./js/carousel.js");
@@ -89,7 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const track = document.getElementById("carousel-track");
   if (track) {
     let index = 0;
-    const totalSlides = 3; // Hard-coded for now
+    const totalSlides = 3;
+    let autoSlideInterval = null;
+    const autoSlideDuration = 4000; // 4 seconds
+    let isAutoPlaying = true;
 
     console.log("Image carousel initialized");
 
@@ -104,16 +123,89 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Image carousel buttons
-    document.getElementById("carousel-prev")?.addEventListener("click", () => {
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
       index = (index - 1 + totalSlides) % totalSlides;
       updateCarousel();
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, autoSlideDuration);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        isAutoPlaying = false;
+      }
+    }
+
+    function restartAutoSlide() {
+      stopAutoSlide();
+      setTimeout(() => {
+        startAutoSlide();
+        isAutoPlaying = true;
+      }, 1000);
+    }
+
+    // Image carousel buttons
+    document.getElementById("carousel-prev")?.addEventListener("click", () => {
+      prevSlide();
+      restartAutoSlide();
     });
 
     document.getElementById("carousel-next")?.addEventListener("click", () => {
-      index = (index + 1) % totalSlides;
-      updateCarousel();
+      nextSlide();
+      restartAutoSlide();
     });
+
+    // Pause on hover
+    const carousel = document.getElementById("carousel");
+    if (carousel) {
+      carousel.addEventListener("mouseenter", stopAutoSlide);
+      carousel.addEventListener("mouseleave", () => {
+        if (!isAutoPlaying) {
+          startAutoSlide();
+          isAutoPlaying = true;
+        }
+      });
+    }
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if (carousel) {
+      carousel.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoSlide();
+      });
+
+      carousel.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        restartAutoSlide();
+      });
+    }
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swiped left - next slide
+          nextSlide();
+        } else {
+          // Swiped right - previous slide
+          prevSlide();
+        }
+      }
+    }
 
     // Create dots for image carousel
     const dotContainer = document.querySelector(".dots");
@@ -122,14 +214,18 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement("button");
         dot.className = `dots__dot ${i === 0 ? "dots__dot--active" : ""}`;
+        dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
         dot.addEventListener("click", () => {
           index = i;
           updateCarousel();
+          restartAutoSlide();
         });
         dotContainer.appendChild(dot);
       }
     }
 
+    // Start auto-slide
+    startAutoSlide();
     updateCarousel();
   }
 

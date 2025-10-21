@@ -7,7 +7,6 @@ class OperationsCarousel {
     this.isAutoPlaying = true;
 
     this.track = document.querySelector(".operations__carousel-track");
-    this.indicators = document.querySelectorAll(".operations__indicator");
     this.progressBar = document.querySelector(".operations__progress-bar");
 
     this.init();
@@ -18,14 +17,6 @@ class OperationsCarousel {
 
     // Start auto-slide
     this.startAutoSlide();
-
-    // Add indicator click handlers
-    this.indicators.forEach((indicator, index) => {
-      indicator.addEventListener("click", () => {
-        this.goToSlide(index);
-        this.restartAutoSlide();
-      });
-    });
 
     // Pause on hover/touch
     const carousel = document.querySelector(".operations__carousel");
@@ -47,23 +38,11 @@ class OperationsCarousel {
     if (this.track) {
       this.track.style.transform = `translateX(${translateX}%)`;
     }
-
-    // Update indicators
-    this.updateIndicators();
   }
 
   nextSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
     this.goToSlide(this.currentSlide);
-  }
-
-  updateIndicators() {
-    this.indicators.forEach((indicator, index) => {
-      indicator.classList.toggle(
-        "operations__indicator--active",
-        index === this.currentSlide
-      );
-    });
   }
 
   startAutoSlide() {

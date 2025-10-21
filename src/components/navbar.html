@@ -1,81 +1,98 @@
 <nav
-  class="flex h-12 sm:h-14 border-b px-4 py-2 border-b-gray-400 shadow-md fixed top-0 left-0 right-0 z-100 bg-white"
+  class="flex h-14 sm:h-16 border-b px-4 sm:px-6 py-2 border-b-gray-200 shadow-sm fixed top-0 left-0 right-0 z-50 bg-white"
 >
-  <div class="flex items-center gap-4">
+  <div class="flex items-center gap-2 sm:gap-4">
     <a href="/" class="flex items-center gap-2">
-      <span class="material-symbols-outlined font-medium text-stone-700">
+      <span
+        class="material-symbols-outlined font-medium text-blue-600 text-2xl"
+      >
         heart_plus
       </span>
       <h2
-        class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]"
+        class="text-gray-900 text-lg sm:text-xl font-bold leading-tight tracking-tight"
       >
         Health Insights
       </h2>
     </a>
   </div>
-  <div class="hidden sm:flex sm:flex-1 justify-end items-center gap-8">
+
+  <!-- Desktop Menu -->
+  <div class="hidden sm:flex sm:flex-1 justify-end items-center gap-6">
     <a
-      class="text-[#111518]! visited:text-[#111518] hover:text-[#111518] text-sm font-bold leading-normal"
-      href="#"
+      class="text-gray-700 hover:text-blue-600 text-sm font-semibold leading-normal transition-colors duration-200"
+      href="/src/pages/about.html"
       >About</a
     >
-    <div
-      class="bg-gray-300 p-1 w-10 h-10 rounded-full flex items-center justify-center"
-    >
-      <span class="material-symbols-outlined text-stone-700">bookmark</span>
-    </div>
     <a
       href="/src/pages/predict.html"
-      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-3xl h-10 px-4 bg-gray-700 text-white! text-sm font-bold leading-normal tracking-[0.015em]"
+      class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-blue-600 hover:bg-blue-700 !text-white text-sm font-bold leading-normal tracking-wide transition-all duration-200 shadow-md hover:shadow-lg"
     >
-      <span class="">Get Started</span>
+      <span class="text-white">Get Started</span>
     </a>
   </div>
-  <!-- Mobile Menu Icon -->
+
+  <!-- Mobile Menu Toggle -->
   <button
-    class="flex items-center justify-center sm:hidden w-8 h-8 outline-none! border-none! shadow-sm transition-all duration-100 bg-sky-50! focus:outline-none! focus:border-none! ml-auto"
+    class="flex items-center justify-center sm:hidden w-10 h-10 rounded-xl outline-none border-none bg-transparent hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 ml-auto group"
     id="menu-toggle"
-    aria-label="Open menu"
+    aria-label="Toggle menu"
+    aria-expanded="false"
     type="button"
   >
-    <span class="material-symbols-outlined">menu </span>
+    <span
+      class="material-symbols-outlined text-gray-700 group-hover:text-blue-600 text-2xl transition-colors duration-200"
+      id="menu-icon"
+      >menu</span
+    >
   </button>
+
   <!-- Mobile Menu Dropdown -->
   <div
     id="mobile-menu"
-    class="fixed hidden sm:hidden top-12 bg-white shadow-lg rounded-sm p-4 flex flex-col gap-4 z-80 left-0 right-0 transition-all ease-in duration-200"
+    class="fixed hidden sm:hidden top-14 left-0 right-0 bg-white/95 backdrop-blur-md shadow-2xl border-t border-gray-200 z-40 animate-slideDown"
   >
-    <ul class="py-2">
-      <li>
+    <div class="container mx-auto px-4 py-4">
+      <div class="grid grid-cols-1 gap-3">
+        <!-- About Link -->
         <a
-          href="#"
-          class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-          style="color: var(--color-dark-500)"
+          href="/src/pages/about.html"
+          class="flex items-center gap-3 px-4 py-4 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 group active:scale-[0.98]"
         >
-          <span class="material-symbols-outlined mr-3 text-xl">info</span>
-          <span class="font-medium">About</span>
+          <div
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 group-hover:bg-blue-200 transition-all duration-200 group-hover:scale-110"
+          >
+            <span class="material-symbols-outlined text-blue-600 text-xl"
+              >info</span
+            >
+          </div>
+          <div class="flex flex-col">
+            <span class="font-semibold text-base">About</span>
+            <span class="text-xs text-gray-500 group-hover:text-gray-600"
+              >Learn more about the model</span
+            >
+          </div>
         </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-          style="color: var(--color-dark-500)"
-        >
-          <span class="material-symbols-outlined mr-3 text-xl">bookmark</span>
-          <span class="font-medium">Bookmarks</span>
-        </a>
-      </li>
-      <li class="border-t border-gray-100 mt-2 pt-2">
+
+        <!-- Get Started Button -->
         <a
           href="/src/pages/predict.html"
-          class="flex items-center justify-center mx-4 mb-2 px-4 py-3 bg-gray-400 text-white rounded-lg font-semibold transition-colors duration-200"
-          style="color: var(--color-dark-500)"
+          class="flex items-center gap-3 px-4 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 !text-white transition-all duration-200 shadow-lg hover:shadow-xl group active:scale-[0.98]"
         >
-          <span class="material-symbols-outlined mr-2">health_and_safety</span>
-          <span>Get Started</span>
+          <div
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-white/20 group-hover:bg-white/30 transition-all duration-200 group-hover:scale-110"
+          >
+            <span class="material-symbols-outlined !text-white text-xl"
+              >health_and_safety</span
+            >
+          </div>
+          <div class="flex flex-col !text-white">
+            <span class="font-bold text-base text-white">Get Started</span>
+            <span class="text-xs text-blue-100"
+              >Begin your health assessment</span
+            >
+          </div>
         </a>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </nav>

@@ -1,7 +1,3 @@
-/**
- * Prediction Form Handler - Enhanced Version
- */
-
 import { mapFormDataToAPI, makePrediction } from "./api.js";
 import config from "../config.js";
 
@@ -11,7 +7,7 @@ const tooltipContent = {
     title: "Age",
     body: `<p><strong>What it means:</strong> Your age in years.</p>
            <p><strong>Why it matters:</strong> Risk of heart disease increases with age. Most heart attacks occur in people over 65.</p>
-           <p><strong>Valid range:</strong> 1-120 years</p>`
+           <p><strong>Valid range:</strong> 1-120 years</p>`,
   },
   sex: {
     title: "Biological Sex",
@@ -20,7 +16,7 @@ const tooltipContent = {
            <ul>
              <li><strong>Male (1):</strong> Typically higher risk</li>
              <li><strong>Female (0):</strong> Risk increases after age 55</li>
-           </ul>`
+           </ul>`,
   },
   chestPain: {
     title: "Chest Pain Type",
@@ -31,7 +27,7 @@ const tooltipContent = {
              <li><strong>Non-anginal:</strong> Chest pain not related to the heart</li>
              <li><strong>Asymptomatic:</strong> No chest pain symptoms</li>
            </ul>
-           <p><strong>Why it matters:</strong> Typical angina is a strong indicator of coronary artery disease.</p>`
+           <p><strong>Why it matters:</strong> Typical angina is a strong indicator of coronary artery disease.</p>`,
   },
   restingBloodPressure: {
     title: "Resting Blood Pressure",
@@ -43,7 +39,7 @@ const tooltipContent = {
              <li><strong>High (Stage 1):</strong> 130-139 mm Hg</li>
              <li><strong>High (Stage 2):</strong> 140+ mm Hg</li>
            </ul>
-           <p><strong>Why it matters:</strong> High blood pressure damages arteries and increases heart disease risk.</p>`
+           <p><strong>Why it matters:</strong> High blood pressure damages arteries and increases heart disease risk.</p>`,
   },
   serumCholesterol: {
     title: "Serum Cholesterol",
@@ -54,7 +50,7 @@ const tooltipContent = {
              <li><strong>Borderline:</strong> 200-239 mg/dl</li>
              <li><strong>High:</strong> 240+ mg/dl</li>
            </ul>
-           <p><strong>Why it matters:</strong> High cholesterol leads to plaque buildup in arteries, increasing heart attack risk.</p>`
+           <p><strong>Why it matters:</strong> High cholesterol leads to plaque buildup in arteries, increasing heart attack risk.</p>`,
   },
   fastingBloodSugar: {
     title: "Fasting Blood Sugar",
@@ -64,7 +60,7 @@ const tooltipContent = {
              <li><strong>Prediabetes:</strong> 100-125 mg/dl</li>
              <li><strong>Diabetes:</strong> 126+ mg/dl</li>
            </ul>
-           <p><strong>Why it matters:</strong> Elevated blood sugar (>120 mg/dl) indicates diabetes, which significantly increases heart disease risk.</p>`
+           <p><strong>Why it matters:</strong> Elevated blood sugar (>120 mg/dl) indicates diabetes, which significantly increases heart disease risk.</p>`,
   },
   restingECG: {
     title: "Resting Electrocardiogram (ECG)",
@@ -73,14 +69,14 @@ const tooltipContent = {
              <li><strong>Normal:</strong> No abnormalities detected</li>
              <li><strong>Abnormal:</strong> ST-T wave changes or left ventricular hypertrophy (enlarged heart muscle)</li>
            </ul>
-           <p><strong>Why it matters:</strong> Abnormal ECG can indicate heart strain, previous heart attacks, or other cardiac issues.</p>`
+           <p><strong>Why it matters:</strong> Abnormal ECG can indicate heart strain, previous heart attacks, or other cardiac issues.</p>`,
   },
   maxHeartRate: {
     title: "Maximum Heart Rate Achieved",
     body: `<p><strong>What it means:</strong> The highest heart rate achieved during an exercise stress test, measured in beats per minute (bpm).</p>
            <p><strong>Expected maximum:</strong> Approximately 220 minus your age</p>
            <p><strong>Example:</strong> If you're 40 years old, expected max ≈ 180 bpm</p>
-           <p><strong>Why it matters:</strong> Lower than expected maximum heart rate may indicate poor cardiovascular fitness or heart problems.</p>`
+           <p><strong>Why it matters:</strong> Lower than expected maximum heart rate may indicate poor cardiovascular fitness or heart problems.</p>`,
   },
   exerciseAngina: {
     title: "Exercise-Induced Angina",
@@ -89,7 +85,7 @@ const tooltipContent = {
              <li><strong>Yes:</strong> Chest pain occurs during exercise</li>
              <li><strong>No:</strong> No chest pain during exercise</li>
            </ul>
-           <p><strong>Why it matters:</strong> Exercise-induced chest pain is a significant indicator of coronary artery disease. The heart needs more oxygen during exercise, and narrowed arteries can't supply enough.</p>`
+           <p><strong>Why it matters:</strong> Exercise-induced chest pain is a significant indicator of coronary artery disease. The heart needs more oxygen during exercise, and narrowed arteries can't supply enough.</p>`,
   },
   stDepression: {
     title: "ST Depression (Oldpeak)",
@@ -97,7 +93,7 @@ const tooltipContent = {
            <p><strong>Measured in:</strong> Millimeters (mm) or units</p>
            <p><strong>Normal:</strong> 0 or minimal depression</p>
            <p><strong>Concerning:</strong> Greater than 2.0 mm</p>
-           <p><strong>Why it matters:</strong> ST depression indicates the heart isn't getting enough oxygen during exercise, suggesting blocked coronary arteries.</p>`
+           <p><strong>Why it matters:</strong> ST depression indicates the heart isn't getting enough oxygen during exercise, suggesting blocked coronary arteries.</p>`,
   },
   slopeSTSegment: {
     title: "Slope of Peak Exercise ST Segment",
@@ -107,7 +103,7 @@ const tooltipContent = {
              <li><strong>Flat:</strong> Level ST segment (mild concern)</li>
              <li><strong>Downsloping:</strong> Declining ST segment (most concerning)</li>
            </ul>
-           <p><strong>Why it matters:</strong> Downsloping ST segment is strongly associated with significant coronary artery disease.</p>`
+           <p><strong>Why it matters:</strong> Downsloping ST segment is strongly associated with significant coronary artery disease.</p>`,
   },
   numMajorVessels: {
     title: "Number of Major Vessels",
@@ -120,7 +116,7 @@ const tooltipContent = {
              <li>Left main coronary artery</li>
            </ul>
            <p><strong>Why it matters:</strong> More blocked vessels = higher risk of heart attack and need for intervention.</p>
-           <p><strong>Note:</strong> Enter 0 if this test wasn't performed.</p>`
+           <p><strong>Note:</strong> Enter 0 if this test wasn't performed.</p>`,
   },
   thalassemia: {
     title: "Thalassemia (Thallium Stress Test)",
@@ -130,8 +126,8 @@ const tooltipContent = {
              <li><strong>Fixed Defect:</strong> Permanent defect from past heart damage (scar tissue)</li>
              <li><strong>Reversible Defect:</strong> Temporary defect during stress, indicating blocked artery but alive muscle</li>
            </ul>
-           <p><strong>Why it matters:</strong> Defects indicate areas of the heart not receiving adequate blood flow, suggesting coronary artery disease.</p>`
-  }
+           <p><strong>Why it matters:</strong> Defects indicate areas of the heart not receiving adequate blood flow, suggesting coronary artery disease.</p>`,
+  },
 };
 
 // Track field completion for progress bar
@@ -151,16 +147,16 @@ export function initPredictionForm() {
 
   // Initialize tooltips
   initTooltips();
-  
+
   // Initialize field validation
   initFieldValidation();
-  
+
   // Initialize progress tracking
   initProgressTracking();
 
   // Form submission
   form.addEventListener("submit", handleFormSubmit);
-  
+
   // Reset button
   if (resetButton) {
     resetButton.addEventListener("click", handleReset);
@@ -175,23 +171,23 @@ function initTooltips() {
   const modal = document.getElementById("tooltip-modal");
   const closeBtn = document.getElementById("tooltip-close");
   const overlay = modal?.querySelector(".tooltip-modal-overlay");
-  
-  tooltipTriggers.forEach(trigger => {
+
+  tooltipTriggers.forEach((trigger) => {
     trigger.addEventListener("click", (e) => {
       e.preventDefault();
       const fieldName = trigger.dataset.tooltip;
       showTooltip(fieldName);
     });
   });
-  
+
   // Close modal
-  [closeBtn, overlay].forEach(element => {
+  [closeBtn, overlay].forEach((element) => {
     element?.addEventListener("click", () => {
       modal?.classList.remove("show");
       modal?.classList.add("hidden");
     });
   });
-  
+
   // Close on escape key
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
@@ -208,12 +204,12 @@ function showTooltip(fieldName) {
   const modal = document.getElementById("tooltip-modal");
   const title = document.getElementById("tooltip-title");
   const body = document.getElementById("tooltip-body");
-  
+
   if (!modal || !tooltipContent[fieldName]) return;
-  
+
   title.textContent = tooltipContent[fieldName].title;
   body.innerHTML = tooltipContent[fieldName].body;
-  
+
   modal.classList.remove("hidden");
   modal.classList.add("show");
 }
@@ -224,24 +220,24 @@ function showTooltip(fieldName) {
 function initFieldValidation() {
   const form = document.getElementById("prediction-form");
   const inputs = form.querySelectorAll("input, select");
-  
-  inputs.forEach(input => {
+
+  inputs.forEach((input) => {
     // Validate on blur
     input.addEventListener("blur", () => {
       validateField(input);
     });
-    
+
     // Clear error on focus
     input.addEventListener("focus", () => {
       clearFieldError(input);
     });
-    
+
     // Validate on change for immediate feedback
     input.addEventListener("change", () => {
       validateField(input);
       updateProgress();
     });
-    
+
     // For number inputs, validate on input
     if (input.type === "number") {
       input.addEventListener("input", () => {
@@ -268,10 +264,10 @@ function updateProgress() {
   const inputs = form.querySelectorAll("input[required], select[required]");
   const progressBar = document.getElementById("progress-bar");
   const progressText = document.getElementById("progress-text");
-  
+
   completedFields.clear();
-  
-  inputs.forEach(input => {
+
+  inputs.forEach((input) => {
     if (input.value && input.value !== "") {
       // Check if value is valid
       if (input.type === "number") {
@@ -286,7 +282,7 @@ function updateProgress() {
       }
     }
   });
-  
+
   const progress = (completedFields.size / totalFields) * 100;
   if (progressBar) {
     progressBar.style.width = `${progress}%`;
@@ -304,7 +300,7 @@ function validateField(input) {
   const name = input.name;
   let isValid = true;
   let errorMessage = "";
-  
+
   // Check if field is empty
   if (!value || value === "") {
     if (input.hasAttribute("required")) {
@@ -316,12 +312,15 @@ function validateField(input) {
     switch (name) {
       case "age":
         const age = parseInt(value);
-        if (age < config.VALIDATION.AGE_MIN || age > config.VALIDATION.AGE_MAX) {
+        if (
+          age < config.VALIDATION.AGE_MIN ||
+          age > config.VALIDATION.AGE_MAX
+        ) {
           isValid = false;
           errorMessage = `Age must be between ${config.VALIDATION.AGE_MIN} and ${config.VALIDATION.AGE_MAX}`;
         }
         break;
-        
+
       case "restingBloodPressure":
         const bp = parseInt(value);
         if (bp < config.VALIDATION.BP_MIN || bp > config.VALIDATION.BP_MAX) {
@@ -329,31 +328,40 @@ function validateField(input) {
           errorMessage = `Blood pressure must be between ${config.VALIDATION.BP_MIN} and ${config.VALIDATION.BP_MAX} mm Hg`;
         }
         break;
-        
+
       case "serumCholesterol":
         const chol = parseInt(value);
-        if (chol < config.VALIDATION.CHOL_MIN || chol > config.VALIDATION.CHOL_MAX) {
+        if (
+          chol < config.VALIDATION.CHOL_MIN ||
+          chol > config.VALIDATION.CHOL_MAX
+        ) {
           isValid = false;
           errorMessage = `Cholesterol must be between ${config.VALIDATION.CHOL_MIN} and ${config.VALIDATION.CHOL_MAX} mg/dl`;
         }
         break;
-        
+
       case "maxHeartRate":
         const hr = parseInt(value);
-        if (hr < config.VALIDATION.THALACH_MIN || hr > config.VALIDATION.THALACH_MAX) {
+        if (
+          hr < config.VALIDATION.THALACH_MIN ||
+          hr > config.VALIDATION.THALACH_MAX
+        ) {
           isValid = false;
           errorMessage = `Heart rate must be between ${config.VALIDATION.THALACH_MIN} and ${config.VALIDATION.THALACH_MAX} bpm`;
         }
         break;
-        
+
       case "stDepression":
         const st = parseFloat(value);
-        if (st < config.VALIDATION.OLDPEAK_MIN || st > config.VALIDATION.OLDPEAK_MAX) {
+        if (
+          st < config.VALIDATION.OLDPEAK_MIN ||
+          st > config.VALIDATION.OLDPEAK_MAX
+        ) {
           isValid = false;
           errorMessage = `ST Depression must be between ${config.VALIDATION.OLDPEAK_MIN} and ${config.VALIDATION.OLDPEAK_MAX}`;
         }
         break;
-        
+
       case "numMajorVessels":
         const ca = parseInt(value);
         if (ca < config.VALIDATION.CA_MIN || ca > config.VALIDATION.CA_MAX) {
@@ -363,7 +371,7 @@ function validateField(input) {
         break;
     }
   }
-  
+
   // Show error or mark as valid
   if (!isValid) {
     showFieldError(input, errorMessage);
@@ -374,7 +382,7 @@ function validateField(input) {
     input.classList.add("valid");
     clearFieldError(input);
   }
-  
+
   return isValid;
 }
 
@@ -420,8 +428,8 @@ async function handleFormSubmit(e) {
   const inputs = form.querySelectorAll("input[required], select[required]");
   let isValid = true;
   let firstInvalidField = null;
-  
-  inputs.forEach(input => {
+
+  inputs.forEach((input) => {
     if (!validateField(input)) {
       isValid = false;
       if (!firstInvalidField) {
@@ -435,7 +443,7 @@ async function handleFormSubmit(e) {
       "Please fill in all required fields correctly. Check the highlighted fields above.",
       "warning"
     );
-    
+
     // Scroll to first invalid field
     if (firstInvalidField) {
       firstInvalidField.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -465,7 +473,8 @@ async function handleFormSubmit(e) {
   } catch (error) {
     console.error("Error making prediction:", error);
     showError(
-      "Failed to get prediction. Please check your API connection and try again. Error: " + error.message,
+      "Failed to get prediction. Please check your API connection and try again. Error: " +
+        error.message,
       "error"
     );
   } finally {
@@ -479,25 +488,25 @@ async function handleFormSubmit(e) {
 function handleReset() {
   const form = document.getElementById("prediction-form");
   if (!form) return;
-  
+
   // Reset form
   form.reset();
-  
+
   // Clear all field states
   const inputs = form.querySelectorAll("input, select");
-  inputs.forEach(input => {
+  inputs.forEach((input) => {
     input.classList.remove("error", "valid");
     clearFieldError(input);
   });
-  
+
   // Reset progress
   completedFields.clear();
   updateProgress();
-  
+
   // Hide results
   hideResults();
   hideError();
-  
+
   // Scroll to top
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -570,7 +579,9 @@ function displayResults(result, formValues) {
               ? `
           <div class="flex items-center justify-between mb-4">
             <span class="text-base font-medium text-gray-700">Model Confidence:</span>
-            <span class="text-2xl font-bold text-gray-800">${(probability * 100).toFixed(1)}%</span>
+            <span class="text-2xl font-bold text-gray-800">${(
+              probability * 100
+            ).toFixed(1)}%</span>
           </div>
           `
               : ""
@@ -601,7 +612,9 @@ function displayResults(result, formValues) {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
             <div class="flex justify-between p-2 bg-white rounded">
               <span class="font-medium text-gray-600">Age:</span>
-              <span class="font-semibold text-gray-900">${formValues.age} years</span>
+              <span class="font-semibold text-gray-900">${
+                formValues.age
+              } years</span>
             </div>
             <div class="flex justify-between p-2 bg-white rounded">
               <span class="font-medium text-gray-600">Sex:</span>
@@ -611,19 +624,27 @@ function displayResults(result, formValues) {
             </div>
             <div class="flex justify-between p-2 bg-white rounded">
               <span class="font-medium text-gray-600">Blood Pressure:</span>
-              <span class="font-semibold text-gray-900">${formValues.restingBloodPressure} mmHg</span>
+              <span class="font-semibold text-gray-900">${
+                formValues.restingBloodPressure
+              } mmHg</span>
             </div>
             <div class="flex justify-between p-2 bg-white rounded">
               <span class="font-medium text-gray-600">Cholesterol:</span>
-              <span class="font-semibold text-gray-900">${formValues.serumCholesterol} mg/dl</span>
+              <span class="font-semibold text-gray-900">${
+                formValues.serumCholesterol
+              } mg/dl</span>
             </div>
             <div class="flex justify-between p-2 bg-white rounded">
               <span class="font-medium text-gray-600">Max Heart Rate:</span>
-              <span class="font-semibold text-gray-900">${formValues.maxHeartRate} bpm</span>
+              <span class="font-semibold text-gray-900">${
+                formValues.maxHeartRate
+              } bpm</span>
             </div>
             <div class="flex justify-between p-2 bg-white rounded">
               <span class="font-medium text-gray-600">ST Depression:</span>
-              <span class="font-semibold text-gray-900">${formValues.stDepression}</span>
+              <span class="font-semibold text-gray-900">${
+                formValues.stDepression
+              }</span>
             </div>
           </div>
         </div>
@@ -706,7 +727,8 @@ function showError(message, type = "error") {
   }
 
   const bgColor = type === "warning" ? "bg-yellow-50" : "bg-red-50";
-  const borderColor = type === "warning" ? "border-yellow-500" : "border-red-500";
+  const borderColor =
+    type === "warning" ? "border-yellow-500" : "border-red-500";
   const textColor = type === "warning" ? "text-yellow-800" : "text-red-800";
   const iconColor = type === "warning" ? "text-yellow-600" : "text-red-600";
   const icon = type === "warning" ? "warning" : "error";
@@ -727,7 +749,7 @@ function showError(message, type = "error") {
   `;
 
   errorContainer.classList.remove("hidden");
-  
+
   // Scroll to error
   errorContainer.scrollIntoView({ behavior: "smooth", block: "center" });
 }
