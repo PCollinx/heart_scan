@@ -13,8 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  loadComponent("footer", "/src/components/footer.html");
-  loadComponent("navbar", "/src/components/navbar.html", () => {
+  // Get the base URL from Vite's import.meta.env or use relative path
+  const basePath = import.meta.env.BASE_URL || '/';
+  
+  loadComponent("footer", `${basePath}src/components/footer.html`);
+  loadComponent("navbar", `${basePath}src/components/navbar.html`, () => {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     const menuIcon = document.getElementById("menu-icon");
