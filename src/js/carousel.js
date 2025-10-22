@@ -13,7 +13,12 @@ class OperationsCarousel {
   }
 
   init() {
-    if (!this.track) return;
+    if (!this.track) {
+      console.log("Operations carousel track not found");
+      return;
+    }
+
+    console.log("Operations carousel initialized, starting auto-slide");
 
     // Start auto-slide
     this.startAutoSlide();
@@ -115,13 +120,10 @@ class OperationsCarousel {
   }
 }
 
-// Initialize carousel when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  // Only initialize on mobile screens
-  if (window.innerWidth <= 768) {
-    new OperationsCarousel();
-  }
-});
+// Initialize carousel immediately when module loads
+if (window.innerWidth <= 768) {
+  new OperationsCarousel();
+}
 
 // Handle window resize
 window.addEventListener("resize", () => {

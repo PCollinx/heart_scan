@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Get the base URL from Vite's import.meta.env or use relative path
-  const basePath = import.meta.env.BASE_URL || '/';
-  
+  const basePath = import.meta.env.BASE_URL || "/";
+
   loadComponent("footer", `${basePath}src/components/footer.html`);
   loadComponent("navbar", `${basePath}src/components/navbar.html`, () => {
     const menuToggle = document.getElementById("menu-toggle");
@@ -65,9 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Menu toggle, mobile menu, or menu icon not found");
     }
 
-    // Load carousel functionality
+    // Load carousel functionality for mobile
     if (window.innerWidth <= 768) {
-      import("./js/carousel.js");
+      import("./js/carousel.js").then(() => {
+        console.log("Operations carousel module loaded and initialized");
+      });
     }
   });
 
@@ -119,11 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const translateX = -(index * 33.333333);
       track.style.transform = `translateX(${translateX}%)`;
       console.log(`Image slide ${index}, translateX: ${translateX}%`);
-
-      // Update dots
-      document.querySelectorAll(".dots .dots__dot").forEach((dot, i) => {
-        dot.classList.toggle("dots__dot--active", i === index);
-      });
     }
 
     function nextSlide() {
@@ -210,33 +207,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Create dots for image carousel
-    const dotContainer = document.querySelector(".dots");
-    if (dotContainer) {
-      dotContainer.innerHTML = "";
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement("button");
-        dot.className = `dots__dot ${i === 0 ? "dots__dot--active" : ""}`;
-        dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-        dot.addEventListener("click", () => {
-          index = i;
-          updateCarousel();
-          restartAutoSlide();
-        });
-        dotContainer.appendChild(dot);
-      }
-    }
-
     // Start auto-slide
     startAutoSlide();
     updateCarousel();
-  }
-
-  // === OPERATIONS CAROUSEL (Mobile) ===
-  // Import the operations carousel only on mobile
-  if (window.innerWidth <= 768) {
-    import("./js/carousel.js").then((module) => {
-      console.log("Operations carousel loaded for mobile");
-    });
   }
 });
