@@ -5,6 +5,8 @@ class OperationsCarousel {
     this.autoSlideInterval = null;
     this.slideDuration = 5000; // 5 seconds
     this.isAutoPlaying = true;
+    this.progressAnimationFrame = null;
+    this.progressStartTime = null;
 
     this.track = document.querySelector(".operations__carousel-track");
     this.progressBar = document.querySelector(".operations__progress-bar");
@@ -20,8 +22,9 @@ class OperationsCarousel {
 
     console.log("Operations carousel initialized, starting auto-slide");
 
-    // Start auto-slide
+    // Start auto-slide and progress animation
     this.startAutoSlide();
+    this.startProgressAnimation();
 
     // Pause on hover/touch
     const carousel = document.querySelector(".operations__carousel");
@@ -43,11 +46,50 @@ class OperationsCarousel {
     if (this.track) {
       this.track.style.transform = `translateX(${translateX}%)`;
     }
+
+    // Reset progress bar
+    this.resetProgressBar();
   }
 
   nextSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
     this.goToSlide(this.currentSlide);
+  }
+
+  startProgressAnimation() {
+    if (!this.progressBar) return;
+
+    this.progressStartTime = Date.now();
+
+    const animate = () => {
+      const elapsed = Date.now() - this.progressStartTime;
+      const progress = Math.min((elapsed / this.slideDuration) * 100, 100);
+
+      this.progressBar.style.transform = `translateX(-${100 - progress}%)`;
+
+      if (progress < 100 && this.isAutoPlaying) {
+        this.progressAnimationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    this.progressAnimationFrame = requestAnimationFrame(animate);
+  }
+
+  resetProgressBar() {
+    if (this.progressBar) {
+      // Cancel any ongoing animation
+      if (this.progressAnimationFrame) {
+        cancelAnimationFrame(this.progressAnimationFrame);
+      }
+
+      // Reset to start
+      this.progressBar.style.transform = "translateX(-100%)";
+
+      // Restart animation if auto-playing
+      if (this.isAutoPlaying) {
+        this.startProgressAnimation();
+      }
+    }
   }
 
   startAutoSlide() {
@@ -60,6 +102,11 @@ class OperationsCarousel {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
       this.isAutoPlaying = false;
+
+      // Pause progress animation
+      if (this.progressAnimationFrame) {
+        cancelAnimationFrame(this.progressAnimationFrame);
+      }
     }
   }
 
@@ -67,6 +114,7 @@ class OperationsCarousel {
     if (!this.isAutoPlaying) {
       this.startAutoSlide();
       this.isAutoPlaying = true;
+      this.startProgressAnimation();
     }
   }
 
@@ -75,6 +123,7 @@ class OperationsCarousel {
     setTimeout(() => {
       this.startAutoSlide();
       this.isAutoPlaying = true;
+      this.resetProgressBar();
     }, 1000);
   }
 

@@ -376,7 +376,7 @@
     background: linear-gradient(90deg, #3b82f6, #1d4ed8);
     border-radius: 2px;
     transform: translateX(-100%);
-    animation: progress 5s linear infinite;
+    transition: transform 0.1s linear;
   }
 }
 
