@@ -213,22 +213,32 @@ npm run build
 
 The `dist/` folder will contain the production-ready files.
 
+### GitHub Pages Deployment
+
+This project is configured for GitHub Pages deployment at `https://pcollinx.github.io/heart_scan/`. 
+
+**Important**: The `base` path is set to `/heart_scan/` in `vite.config.ts` to ensure all assets load correctly.
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
+
 ### Deployment Checklist
 
 - [ ] Update `API_ENDPOINT` in `src/config.js` to production URL
 - [ ] Set `DEBUG: false` in `src/config.js`
 - [ ] Build the project (`npm run build`)
-- [ ] Deploy `dist/` folder to hosting service (Netlify, Vercel, etc.)
+- [ ] Deploy `dist/` folder to hosting service
 - [ ] Ensure backend API is accessible from production domain
 - [ ] Configure CORS on backend for production domain
 - [ ] Use HTTPS for both frontend and backend
 
 ### Hosting Options
 
-- **Netlify**: Drag and drop `dist/` folder
-- **Vercel**: Connect GitHub repo for auto-deployment
-- **GitHub Pages**: Use `gh-pages` branch
+- **GitHub Pages**: Configured with base path `/heart_scan/` (see [DEPLOYMENT.md](./DEPLOYMENT.md))
+- **Netlify**: Update `base: "/"` in `vite.config.ts` before deployment
+- **Vercel**: Update `base: "/"` in `vite.config.ts` before deployment
 - **AWS S3 + CloudFront**: For scalable hosting
+
+**Note**: When deploying to custom domains (not GitHub Pages), change `base: "/heart_scan/"` to `base: "/"` in `vite.config.ts`.
 
 ## 🔒 Security Considerations
 
