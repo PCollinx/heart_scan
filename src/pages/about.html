@@ -726,43 +726,436 @@
                 Feature Importance Analysis
               </h3>
               <p class="text-gray-700 mb-6">
-                Our Logistic Regression model provides clear insights into which
-                clinical parameters have the most significant impact on heart
-                disease prediction through coefficient analysis.
+                Our Logistic Regression model analyzes the contribution of each
+                clinical parameter to heart disease prediction. The coefficients
+                reveal
+                <strong
+                  >which features contributed most to the outcomes and how they
+                  contributed</strong
+                >. Positive coefficients increase heart disease probability,
+                while negative coefficients decrease it.
               </p>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div
-                  class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg"
+
+              <!-- Top 5 Most Important Features -->
+              <div class="mb-12">
+                <h4
+                  class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3"
                 >
-                  <h4
-                    class="font-bold text-red-900 mb-3 flex items-center gap-2"
+                  <span class="material-symbols-outlined text-2xl text-blue-600"
+                    >trending_up</span
                   >
-                    <span class="material-symbols-outlined">arrow_upward</span>
-                    Strongest Positive Indicators
-                  </h4>
-                  <ul class="space-y-2 text-sm text-red-800">
-                    <li>• Exercise-induced angina (exang)</li>
-                    <li>• Chest pain patterns (cp)</li>
-                    <li>• ST depression (oldpeak)</li>
-                    <li>• Number of major vessels (ca)</li>
-                  </ul>
-                </div>
-                <div
-                  class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg"
-                >
-                  <h4
-                    class="font-bold text-green-900 mb-3 flex items-center gap-2"
+                  Top 5 Most Influential Features
+                </h4>
+                <p class="text-gray-600 mb-8">
+                  Ranked by absolute coefficient value - the stronger the
+                  influence on heart disease prediction
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <!-- Feature 1: Sex -->
+                  <div
+                    class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
                   >
-                    <span class="material-symbols-outlined"
-                      >arrow_downward</span
+                    <div
+                      class="bg-gradient-to-r from-red-500 to-red-600 px-6 py-4"
                     >
-                    Protective Factors
-                  </h4>
-                  <ul class="space-y-2 text-sm text-green-800">
-                    <li>• Maximum heart rate (thalach)</li>
-                    <li>• Certain chest pain types</li>
-                    <li>• Favorable ST slope values</li>
-                    <li>• Normal thalassemia results</li>
+                      <div class="flex items-center justify-between text-white">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl"
+                          >
+                            <span class="material-symbols-outlined text-xl"
+                              >person</span
+                            >
+                          </div>
+                          <div>
+                            <div class="text-sm font-medium opacity-90">
+                              #1 Most Influential
+                            </div>
+                            <div class="text-lg font-bold">Sex (Gender)</div>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <div class="text-2xl font-bold">-0.860</div>
+                          <div class="text-xs opacity-90">Coefficient</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-6">
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="material-symbols-outlined text-red-600"
+                          >arrow_downward</span
+                        >
+                        <span class="font-semibold text-red-800"
+                          >Decreases Risk</span
+                        >
+                      </div>
+                      <p class="text-gray-700 text-sm leading-relaxed">
+                        Being female (sex=0) significantly reduces heart disease
+                        risk compared to males in this dataset, making gender
+                        the strongest predictor in our model.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Feature 2: Thal -->
+                  <div
+                    class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
+                  >
+                    <div
+                      class="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4"
+                    >
+                      <div class="flex items-center justify-between text-white">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl"
+                          >
+                            <span class="material-symbols-outlined text-xl"
+                              >science</span
+                            >
+                          </div>
+                          <div>
+                            <div class="text-sm font-medium opacity-90">
+                              #2 Most Influential
+                            </div>
+                            <div class="text-lg font-bold">Thalassemia</div>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <div class="text-2xl font-bold">-0.677</div>
+                          <div class="text-xs opacity-90">Coefficient</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-6">
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="material-symbols-outlined text-purple-600"
+                          >arrow_downward</span
+                        >
+                        <span class="font-semibold text-purple-800"
+                          >Decreases Risk</span
+                        >
+                      </div>
+                      <p class="text-gray-700 text-sm leading-relaxed">
+                        Normal thalassemia results (1=normal) reduce heart
+                        disease risk. Fixed (2) or reversible defects (3)
+                        increase risk significantly.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Feature 3: Chest Pain -->
+                  <div
+                    class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
+                  >
+                    <div
+                      class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4"
+                    >
+                      <div class="flex items-center justify-between text-white">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl"
+                          >
+                            <span class="material-symbols-outlined text-xl"
+                              >favorite</span
+                            >
+                          </div>
+                          <div>
+                            <div class="text-sm font-medium opacity-90">
+                              #3 Most Influential
+                            </div>
+                            <div class="text-lg font-bold">Chest Pain Type</div>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <div class="text-2xl font-bold">+0.661</div>
+                          <div class="text-xs opacity-90">Coefficient</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-6">
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="material-symbols-outlined text-blue-600"
+                          >arrow_upward</span
+                        >
+                        <span class="font-semibold text-blue-800"
+                          >Increases Risk</span
+                        >
+                      </div>
+                      <p class="text-gray-700 text-sm leading-relaxed">
+                        Higher chest pain type values (asymptomatic=3,
+                        non-anginal=2) are stronger indicators of heart disease
+                        than typical angina (0).
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Feature 4: Major Vessels -->
+                  <div
+                    class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
+                  >
+                    <div
+                      class="bg-gradient-to-r from-indigo-500 to-indigo-600 px-6 py-4"
+                    >
+                      <div class="flex items-center justify-between text-white">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl"
+                          >
+                            <span class="material-symbols-outlined text-xl"
+                              >monitor_heart</span
+                            >
+                          </div>
+                          <div>
+                            <div class="text-sm font-medium opacity-90">
+                              #4 Most Influential
+                            </div>
+                            <div class="text-lg font-bold">Major Vessels</div>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <div class="text-2xl font-bold">-0.636</div>
+                          <div class="text-xs opacity-90">Coefficient</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-6">
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="material-symbols-outlined text-indigo-600"
+                          >arrow_downward</span
+                        >
+                        <span class="font-semibold text-indigo-800"
+                          >Decreases Risk</span
+                        >
+                      </div>
+                      <p class="text-gray-700 text-sm leading-relaxed">
+                        Fewer major vessels colored by fluoroscopy (0-3)
+                        correlate with lower heart disease probability in the
+                        diagnostic assessment.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Feature 5: Exercise Angina - Full Width -->
+                  <div class="lg:col-span-2">
+                    <div
+                      class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
+                    >
+                      <div
+                        class="bg-gradient-to-r from-teal-500 to-teal-600 px-6 py-4"
+                      >
+                        <div
+                          class="flex items-center justify-between text-white"
+                        >
+                          <div class="flex items-center gap-3">
+                            <div
+                              class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl"
+                            >
+                              <span class="material-symbols-outlined text-xl"
+                                >exercise</span
+                              >
+                            </div>
+                            <div>
+                              <div class="text-sm font-medium opacity-90">
+                                #5 Most Influential
+                              </div>
+                              <div class="text-lg font-bold">
+                                Exercise-Induced Angina
+                              </div>
+                            </div>
+                          </div>
+                          <div class="text-right">
+                            <div class="text-2xl font-bold">-0.604</div>
+                            <div class="text-xs opacity-90">Coefficient</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="p-6">
+                        <div
+                          class="flex flex-col sm:flex-row sm:items-center gap-4"
+                        >
+                          <div class="flex items-center gap-2">
+                            <span
+                              class="material-symbols-outlined text-teal-600"
+                              >arrow_downward</span
+                            >
+                            <span class="font-semibold text-teal-800"
+                              >Decreases Risk</span
+                            >
+                          </div>
+                          <p
+                            class="text-gray-700 text-sm leading-relaxed flex-1"
+                          >
+                            Absence of exercise-induced angina (exang=0) reduces
+                            heart disease likelihood compared to its presence
+                            (exang=1), indicating better cardiovascular fitness.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Complete Feature Ranking -->
+              <div class="mb-8">
+                <h4
+                  class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-gray-600"
+                    >list</span
+                  >
+                  Complete Feature Impact Ranking
+                </h4>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <h5 class="font-semibold text-gray-800 mb-3">
+                        Risk Increasing Features (Positive Coefficients)
+                      </h5>
+                      <ul class="space-y-1 text-gray-700">
+                        <li class="flex justify-between">
+                          <span>Chest Pain Type (cp)</span>
+                          <span class="text-blue-600 font-mono">+0.661</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>ST Slope (slope)</span>
+                          <span class="text-blue-600 font-mono">+0.451</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Resting ECG (restecg)</span>
+                          <span class="text-blue-600 font-mono">+0.313</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Fasting Blood Sugar (fbs)</span>
+                          <span class="text-blue-600 font-mono">+0.044</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Max Heart Rate (thalach)</span>
+                          <span class="text-blue-600 font-mono">+0.025</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Age</span>
+                          <span class="text-blue-600 font-mono">+0.003</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-gray-800 mb-3">
+                        Risk Decreasing Features (Negative Coefficients)
+                      </h5>
+                      <ul class="space-y-1 text-gray-700">
+                        <li class="flex justify-between">
+                          <span>Sex (Gender)</span>
+                          <span class="text-red-600 font-mono">-0.860</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Thalassemia (thal)</span>
+                          <span class="text-red-600 font-mono">-0.677</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Major Vessels (ca)</span>
+                          <span class="text-red-600 font-mono">-0.636</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Exercise Angina (exang)</span>
+                          <span class="text-red-600 font-mono">-0.604</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>ST Depression (oldpeak)</span>
+                          <span class="text-red-600 font-mono">-0.569</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Resting BP (trestbps)</span>
+                          <span class="text-red-600 font-mono">-0.012</span>
+                        </li>
+                        <li class="flex justify-between">
+                          <span>Cholesterol (chol)</span>
+                          <span class="text-red-600 font-mono">-0.002</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Key Insights -->
+              <div
+                class="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-lg"
+              >
+                <h4
+                  class="font-bold text-blue-900 mb-3 flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined">lightbulb</span>
+                  Key Clinical Insights from Feature Analysis
+                </h4>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-800"
+                >
+                  <ul class="space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="material-symbols-outlined text-lg text-blue-600 mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        ><strong>Gender Matters:</strong> Males show
+                        significantly higher heart disease risk</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="material-symbols-outlined text-lg text-blue-600 mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        ><strong>Chest Pain Patterns:</strong> Asymptomatic
+                        chest pain is a strong predictor</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="material-symbols-outlined text-lg text-blue-600 mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        ><strong>Blood Tests:</strong> Thalassemia results
+                        provide important diagnostic value</span
+                      >
+                    </li>
+                  </ul>
+                  <ul class="space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="material-symbols-outlined text-lg text-blue-600 mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        ><strong>Exercise Response:</strong> Absence of
+                        exercise-induced angina is protective</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="material-symbols-outlined text-lg text-blue-600 mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        ><strong>Vascular Health:</strong> Fewer blocked major
+                        vessels correlate with lower risk</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="material-symbols-outlined text-lg text-blue-600 mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        ><strong>Model Reliability:</strong> Based on 303
+                        validated patient cases</span
+                      >
+                    </li>
                   </ul>
                 </div>
               </div>
